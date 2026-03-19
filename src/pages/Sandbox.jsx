@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import Footer from '../components/Footer'
 import { useReveal } from '../components/useReveal'
-import eljiLogo from '../assets/Logo_elji.png'
+import eljiLogo from '../assets/elji_horizontal_logo.png'
 import lebowski from '../assets/lebowski.png'
 import godotLogo from '../assets/godot_logo.jfif'
 import pixel_art from '../assets/pixel_art_assets.png'
@@ -16,7 +16,7 @@ export const sandboxItems = [
     tech: ['Figma', 'Identité graphique'],
     image: eljiLogo,
     src:'/assets/Charte_Graphique_ELJI.pdf',
-    bg: 'almost-white',
+    bg: 'white',
     textColor: 'almost-black',
     size: 'md',
     rotate: -5,
@@ -46,8 +46,8 @@ export const sandboxItems = [
     image: YoutubeLogo,
     src: 'https://www.youtube.com/watch?v=pAD-u5XveQ0',
     youtubeId: 'pAD-u5XveQ0',
-    bg: 'almost-black',
-    textColor: 'almost-white',
+    bg: 'almost-white',
+    textColor: 'almost-black',
     size: 'lg',
     rotate: -3,
     accent: 'orange',
@@ -197,7 +197,6 @@ function SandboxCard({ item, onVideoOpen }) {
         transition: 'all 0.4s cubic-bezier(0.34,1.56,0.64,1)'
       }}
     >
-      {/* Cover image zone */}
       <div
         className="w-full flex items-center justify-center overflow-hidden relative"
         style={{
@@ -218,7 +217,6 @@ function SandboxCard({ item, onVideoOpen }) {
           </div>
         )}
 
-        {/* Play overlay for videos */}
         {isVideo && isClickable && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/35 transition-colors">
             <div className="w-14 h-14 rounded-full bg-black/55 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-all duration-200">
@@ -230,7 +228,6 @@ function SandboxCard({ item, onVideoOpen }) {
         )}
       </div>
 
-      {/* Card body */}
       <div className="p-5">
         <div className="flex items-start gap-2 mb-2">
           <span className={`mt-[5px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${a.dot}`} />
@@ -249,7 +246,7 @@ function SandboxCard({ item, onVideoOpen }) {
   )
 }
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+
 export default function Sandbox() {
   const pageRef = useRef(null)
   useReveal(pageRef)
