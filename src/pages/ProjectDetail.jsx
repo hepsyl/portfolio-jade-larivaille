@@ -480,13 +480,13 @@ const projects = {
       },
     ],
     objectives: ["Designer 5 écrans desktop", "Respecter la charte graphique de l'Université de Bordeaux"],
-    constraints: ["3 jours de travail", "Respect de la charte graphique de Bordeaux"],
+    constraints: ["3 jours de travail", "S'émanciper de la charte graphique tout en restant cohérent par rapport à celle-ci"],
     process: [
       { phase: '01', title: 'Recherche & benchmark', period: '', color: 'orange', tasks: ["Analyse de Curieux.Live !, Brut…", "Focus sur les systèmes de filtrage"] },
       { phase: '02', title: 'Prototypage Figma', period: '', color: 'orange', tasks: ["5 écrans desktop haute-fidélité"] },
     ],
-    livrablesApp: [],
-    livrablesSite: ["5 écrans desktop : accueil, agenda, à propos, contenu BD, contenu vidéo"],
+    livrablesApp: ["5 écrans desktop : accueil, agenda, à propos, contenu BD, contenu vidéo"],
+    livrablesSite: ["Les maquettes ont été validées et implémentées dans le site."],
     gallery: [
       { image: salsHero, caption: "Page d'accueil - Hero" },
       { image: salsFiltre, caption: "Page d'accueil - Contenus et filtres" },
@@ -498,7 +498,7 @@ const projects = {
     learnings: [],
     improvements: [],
     links: [{ label: 'Site web', url: 'https://sciencealasource.u-bordeaux.fr/', note: null }],
-    next: 'izired',
+    next: 'ensemenc',
   },
 
     ensemenc: {
@@ -519,7 +519,7 @@ const projects = {
     sections: [
       {
         heading: "Contexte et présentation du Jeu",
-        content: ["Le projet ENSemenC était une projet de création d’un jeu en C# pour mettre en application les enseignements en Programmation Orientée Objet (POO) dispensés au cours du semestre. Nous étions en binôme pour ce projet. Le jeu était imposé, il s’agissait de créer une simulation de potager, au tour par tour, avec diverses plantes ayant des besoins spécifiques. Le joueur doit planter, entretenir et protéger ses cultures en fonction de leurs besoins (eau, lumière, température, terrain), tout en faisant face à des événements aléatoires comme des animaux nuisibles ou des intempéries.",
+        content: ["NSemenC était un projet de création d’un jeu en C# pour mettre en application les enseignements en Programmation Orientée Objet (POO) dispensés au cours du semestre. Nous étions en binôme pour ce projet. Le jeu était imposé, il s’agissait de créer une simulation de potager, au tour par tour, avec diverses plantes ayant des besoins spécifiques. Le joueur doit planter, entretenir et protéger ses cultures en fonction de leurs besoins (eau, lumière, température, terrain), tout en faisant face à des événements aléatoires comme des animaux nuisibles ou des intempéries.",
         "Le jeu propose deux modes : \n \t Mode Classique : plantation, achat d’objets, entretien du potager, consultation d’un wiki interne, passage du temps… \n \t Mode Urgence : réactions rapides en temps limité face aux menaces (grêle, sécheresse, rongeurs, etc.), avec un déroulement et des actions spécifiques."],
       },
     ],
@@ -529,8 +529,8 @@ const projects = {
       { phase: '01', title: 'Diagrammes UML', period: 'Semaine 1', color: 'neutral', tasks: ["Première version du diagramme de classes UML", "Définition des paramètres, actions possibles et du contexte du jeu"] },
       { phase: '02', title: 'Programmation', period: '', color: 'green', tasks: ["Répartition des classes importantes en premier (Animaux, Plantes)", "Fonctionnement en branches pour limiter les conflits", "Débuggage du jeu au fur et à mesure"] },
     ],
-    livrablesApp: [],
-    livrablesSite: ["Jeu fonctionnel", "Rapport de projet de 20 pages"],
+    livrablesApp: ["Jeu fonctionnel avec 2 modes de jeu, 9 types de plantes et gestion d'événements aléatoires", "Menu principal avec accès à un wiki dans la console"],
+    livrablesSite: ["Rapport de projet de 20 pages", "Diagrammes UML, d'entités et de relation complets"],
     gallery: [
       { image: ensemencArbre, caption: "Arbre de décisions du menu principal" },
       { image: ensemencClassique, caption: "Affichage en mode Classique" },
