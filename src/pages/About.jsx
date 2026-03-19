@@ -78,17 +78,25 @@ export default function About() {
               <span className="text-bright-green font-semibold">développement</span>{' '}
               que la{' '}
               <span className="text-bright-orange font-semibold" data-cursor="orange">créativité</span>{' '}
-              dans la coneption de mes projets.
+              dans la conception de mes projets.
             </p>
-            <button
-              onClick={() => handleClick()}
-              className="inline-flex items-center gap-2.5 bg-almost-black text-white font-body text-sm font-semibold px-8 py-4 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,9,3,0.15)]"
-            >
-              Voir mon CV
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
+            <div className="flex gap-4 py-2 flex-row">
+              <button
+                onClick={() => handleClick()}
+                className="inline-flex items-center gap-2.5 bg-almost-black text-white font-body text-sm font-semibold px-8 py-4 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,9,3,0.15)]"
+              >
+                Voir mon CV
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+              <a
+                href={"https://github.com/hepsyl"}
+                className="inline-flex items-center gap-2.5 border-dark-green border-2 text-dark-green font-body text-sm font-semibold px-8 py-4 rounded-full transition-all hover:bg-dark-green hover:text-white hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,9,3,0.15)]"
+              >
+                Voir mon GitHub
+              </a>   
+            </div>       
           </div>
 
           <div className="reveal">
@@ -227,7 +235,7 @@ export default function About() {
               <div className="w-10 h-10 rounded-l-xl flex items-center justify-center text-lg flex-shrink-0">📩</div>
               <div>
                 <p className="font-body text-[0.85rem] font-semibold text-almost-white tracking-wide">Envoyez moi un mail !</p>
-                <p className="font-body text-[0.72rem] text-white/40">jadelarivaille@orange.fr</p>
+                <p className="font-body text-[0.72rem] text-white/40">jlarivaille@ensc.fr</p>
               </div>
             </a>
           </div>
