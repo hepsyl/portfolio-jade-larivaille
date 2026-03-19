@@ -262,7 +262,7 @@ const projects = {
     sections: [
       {
         heading: "Contexte",
-        content: "Le FIFAAC est un festival de cinéma et d’arcitecture qui se tient chaque année à Bordeaux. Pour sa 10ème édition, ils souhaitaient redonner un coup de frais au site internet. .",
+        content: "Le FIFAAC est un festival de cinéma et d’arcitecture qui se tient chaque année à Bordeaux. Pour sa 10ème édition, ils souhaitaient redonner un coup de frais au site internet.",
       },
       {
         heading: "Mon approche",
@@ -278,7 +278,7 @@ const projects = {
       { phase: '02', title: 'Wireframes & architecture', period: '', color: 'orange', tasks: ["Architecture de l'information et wireframes"] },
       { phase: '03', title: 'Prototypage Figma', period: '', color: 'orange', tasks: ["Prototypage interactif haute-fidélité", "Desktop & Mobile"] },
     ],
-    livrablesApp: [],
+    livrablesApp: ["Moodboard du projet", "Page de composants et éléments principaux du site pour validation avant prototypage"],
     livrablesSite: ["8 écrans haute fidélité", "Version mobile"],
     gallery: [
       { image: fifaacHero, caption: "Page d'accueil - hero section"},
@@ -325,7 +325,7 @@ const projects = {
       },
       {
         heading: "Le projet",
-        content: ["Le compagnon virtuel est un projet de création et de test d'un compagnon virtuel en 3D afin d'aider les patients en rééducation motrice et/ou post-AVC. Il s'agit d'un projet de groupe à 4 sur lequel je travaille actuellement, qui s'étend d'octobre 2024 à mai 2025.",
+        content: ["Le compagnon virtuel est un projet de création et de test d'un compagnon virtuel en 3D afin d'aider les patients en rééducation motrice et/ou post-AVC. Il s'agit d'un projet de groupe à 4 qui s'est étendu d'octobre 2024 à mai 2025.",
                   "Nous avons donc analysé l'état de l'art réalisé par un groupe précédent il y a 2 ans et modélisé en 3D le compagnon à l'aide du logiciel Maya dans 3 positions : debout, assis, couché. Ensuite, nous avons codé rapidement un jeu du Simon sur Unity et Visual Studio en C# pour pouvoir y intégrer notre compagnon par la suite. Le but ici est surtout de tester différents niveaux d'implication du compagnon afin de déterminer ce qui est le plus pertinent pour aider les patients en tant que soutien moral."],
       },
       {
@@ -403,7 +403,7 @@ const projects = {
     sections: [
       {
         heading: "Contexte",
-        content: "Octo'Tune est une application Web mobile en cours de développement dans le cadre d'un projet transpromotions entre 1ère et 2ème années de l'Ecole Nationale Supérieure de Cognitique. Il s'agit d'une application de gestion du club musique de l'école. Les réservations de la salle étaient dispersées sur plusieurs canaux, les membres avaient du mal à trouver d'autres musiciens pour leurs projets et le calendrier était compliqué à suivre. Le but de cette appplication était donc de centraliser et de faciliter l'accès à l'information.",
+        content: "Octo'Tune est une application Web mobile en cours de développement dans le cadre d'un projet transpromotions entre 1ère et 2ème années de l'Ecole Nationale Supérieure de Cognitique. Il s'agit d'une application de gestion du club musique de l'école. Les réservations de la salle étaient dispersées sur plusieurs canaux, les membres avaient du mal à trouver d'autres musiciens pour leurs projets et le calendrier était compliqué à suivre. Le but de cette application était donc de centraliser et de faciliter l'accès à l'information.",
       },
       {
         heading: "Mes contributions",
@@ -416,11 +416,11 @@ const projects = {
       },
       {
         heading: "Evaluation de l'utilisabilité",
-        content: "Nous avons réalisé un premier prototype fonctionnel de l'application, sur lequel nous avons réalisé des tests utilisateur afin d'identifier les points de friction. Ainsi, nous avons pu relever le manque de clarté de certaines icônes de navigation et refondre complètement notre première version du planning ppur quelque chose de beaucoup plus intuitif et navigable.",
+        content: "Nous avons réalisé un premier prototype fonctionnel de l'application, sur lequel nous avons réalisé des tests utilisateur afin d'identifier les points de friction. Ainsi, nous avons pu relever le manque de clarté de certaines icônes de navigation et refondre complètement notre première version du planning pour quelque chose de beaucoup plus intuitif et navigable.",
       },
       {
-        heading: "Développement de l'appplication",
-        content: "En tant qu'élève de 1ère année, c'était la première fois que j'utilisais JavaScript et React, n'ayant alors que les bases d'HTML et CSS. Les élèves de deuxième année se sont occupés de construire l'API de l'application et nous nous sommes concentrés sur le front. J'ai ainsi pu réaliser la page d'accueil, la messagerie générale, la page d'évènements. Ayant beaucoup aimé travailler sur le projet, j'ai réalisé le bloc de notifications ainsi que la liste des membres de mon côté, après la fin du projet.",
+        heading: "Développement de l'application",
+        content: "Ce projet m'a permis une Montée en compétences rapide sur React et JavaScript. Les élèves de deuxième année se sont occupés de construire l'API de l'application et nous nous sommes concentrés sur le front. J'ai ainsi pu réaliser la page d'accueil, la messagerie générale, la page d'évènements. Ayant beaucoup aimé travailler sur le projet, j'ai réalisé le bloc de notifications ainsi que la liste des membres de mon côté, après la fin du projet.",
       },
     ],
     objectives: ["Mettre en oeuvre des méthodes de conception centrée utilisateur", "Réaliser un prototype fonctionnel de l'application", "Développer l'application"],
