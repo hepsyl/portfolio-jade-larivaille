@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Footer from '../components/Footer'
 import { useReveal } from '../components/useReveal'
 import eljiLogo from '../assets/Logo_elji.png'
@@ -45,6 +45,7 @@ export const sandboxItems = [
     tech: ['Jitter', 'Motion Design'],
     image: YoutubeLogo,
     src: 'https://www.youtube.com/watch?v=pAD-u5XveQ0',
+    youtubeId: 'pAD-u5XveQ0',
     bg: 'almost-black',
     textColor: 'almost-white',
     size: 'lg',
@@ -55,6 +56,8 @@ export const sandboxItems = [
   {
     id: 'godot',
     type: 'video',
+    youtubeId: 'l3-5hwWbmLo',
+    isShort: true,
     label: 'Apprentissage du moteur Godot',
     desc: "Réalisation d'un jeu mobile 2D en suivant le tutoriel du moteur de jeu Godot",
     tech: ['Godot', 'GDScript'],
@@ -67,7 +70,7 @@ export const sandboxItems = [
     accent: 'green',
     isClickable : 'True',
   },
-    {
+  {
     id: 'pixel_art',
     type: 'image',
     label: 'Pixel Art',
@@ -81,7 +84,6 @@ export const sandboxItems = [
     accent: 'orange',
     isClickable : 'False',
   },
-  
 ]
 
 const sizeClass = {
@@ -95,63 +97,140 @@ const accentMap = {
   orange: { dot: 'bg-bright-orange', tag: 'bg-bright-orange/10 text-dark-orange', border: 'border-bright-orange/20' },
 }
 
+function VideoLightbox({ item, onClose }) {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [onClose])
 
-function SandboxCard({ item }) {
+  const isYoutube = !!item.youtubeId
+
+  return (
+    <div
+      className="fixed inset-0 z-[99999] bg-black/85 backdrop-blur-sm flex items-center justify-center pt-[64px]"
+      onClick={onClose}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-[72px] right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center text-white z-10"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div
+        className="flex flex-col items-center gap-4 max-w-[80vw] w-full"
+        onClick={e => e.stopPropagation()}
+      >
+        {isYoutube ? (
+          <div className={`w-full rounded-xl overflow-hidden shadow-2xl ${
+            item.isShort 
+              ? 'max-w-[340px] aspect-[9/16]'
+              : 'max-w-[80vw] aspect-video'
+            }`}>
+            <iframe
+              src={`https://www.youtube.com/embed/${item.youtubeId}?autoplay=1`}
+              title={item.label}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full border-0"
+            />
+          </div>
+        ) : (
+          <video
+            src={(() => {
+              const baseUrl = import.meta.env.BASE_URL
+              return `${baseUrl}/${item.src}`.replace(/\/+/g, '/')
+            })()}
+            controls
+            autoPlay
+            className="max-w-[80vw] max-h-[65vh] rounded-xl shadow-2xl"
+          />
+        )}
+        <p className="font-body text-sm text-white/70">{item.label}</p>
+      </div>
+    </div>
+  )
+}
+
+// ─── Card ─────────────────────────────────────────────────────────────────────
+function SandboxCard({ item, onVideoOpen }) {
   const [hovered, setHovered] = useState(false)
   const a = accentMap[item.accent] || accentMap.green
+
   function handleClick() {
-    if (item.type === 'pdf'){
-      const baseUrl = import.meta.env.BASE_URL;
-      const cleanPath = `${baseUrl}/${item.src}`.replace(/\/+/g, '/');
-      window.open(cleanPath, '_blank');}
-    if (item.type === 'video'){
-      const baseUrl = import.meta.env.BASE_URL;
-      const cleanPath = `${baseUrl}/${item.src}`.replace(/\/+/g, '/');
-      window.open(cleanPath, '_blank');}
+    if (item.isClickable !== 'True') return
+    if (item.type === 'pdf') {
+      const baseUrl = import.meta.env.BASE_URL
+      const cleanPath = `${baseUrl}/${item.src}`.replace(/\/+/g, '/')
+      window.open(cleanPath, '_blank')
     }
+    if (item.type === 'video') {
+      onVideoOpen(item)
+    }
+  }
+
+  const isClickable = item.isClickable === 'True'
+  const isVideo = item.type === 'video'
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={handleClick}
       className={`
         relative flex-shrink-0 ${sizeClass[item.size] || sizeClass.md}
         rounded-2xl overflow-hidden border border-black/8 bg-almost-white
         shadow-[0_4px_20px_rgba(0,9,3,0.07)]
         transition-all duration-500
-        ${hovered ? 'shadow-[0_16px_48px_rgba(0,9,3,0.14)] -translate-y-2 z-10' : ''}
+        ${isClickable ? 'cursor-pointer' : ''}
+        ${hovered && isClickable ? 'shadow-[0_16px_48px_rgba(0,9,3,0.14)] -translate-y-2 z-10' : ''}
       `}
-      onClick = {()=>handleClick()}
-      style={{ transform: `rotate(${item.rotate || 0}deg) ${hovered && item.isClickable === 'True' ? 'rotate(0deg) translateY(-8px)' : ''}`, transition: 'all 0.4s cubic-bezier(0.34,1.56,0.64,1)' }}
+      style={{
+        transform: `rotate(${item.rotate || 0}deg)${hovered && isClickable ? ' translateY(-8px)' : ''}`,
+        transition: 'all 0.4s cubic-bezier(0.34,1.56,0.64,1)'
+      }}
     >
+      {/* Cover image zone */}
       <div
-        className="w-full flex items-center justify-center overflow-hidden"
-        style={{ background: item.bg || '#f2f4f2', minHeight: item.size === 'lg' ? 260 : item.size === 'sm' ? 180 : 220 }}
+        className="w-full flex items-center justify-center overflow-hidden relative"
+        style={{
+          background: item.bg === 'almost-black' ? '#0d1a12' : '#f2f4f2',
+          minHeight: item.size === 'lg' ? 260 : item.size === 'sm' ? 180 : 220
+        }}
       >
-        {item.type === 'image' && (
-          item.image
-            ? <img src={item.image} alt={item.label} className="w-full h-full object-cover" />
-            : <ImagePlaceholder label={item.label} />
+        {item.image ? (
+          <img
+            src={item.image}
+            alt={item.label}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-[#b0bab5]">
+            <span className="text-3xl">🖼</span>
+            <p className="font-body text-[0.72rem] tracking-wide">Image non disponible</p>
+          </div>
         )}
 
-        {item.type === 'logo' && (
-          item.image
-            ? <img src={item.image} alt={item.label} className="max-h-[100px] max-w-[200px] object-contain" />
-            : <LogoPlaceholder color={item.textColor || '#FCFCFC'} />
-        )}
-
-        {item.type === 'pdf' && (item.image
-            ? <img src={item.image} alt={item.label} className="max-h-[100px] max-w-[200px] object-contain" />
-            : <LogoPlaceholder color={item.textColor || '#FCFCFC'} />
-        )}
-
-        {item.type === 'video' && (
-          item.src
-            ? <video src={item.src} type = "video/mp4" className={`w-full h-full object-cover`} playsInline muted loop/>
-            : <ImagePlaceholder label="Vidéo" icon="🎬" />
+        {/* Play overlay for videos */}
+        {isVideo && isClickable && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/35 transition-colors">
+            <div className="w-14 h-14 rounded-full bg-black/55 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-all duration-200">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
         )}
       </div>
 
+      {/* Card body */}
       <div className="p-5">
         <div className="flex items-start gap-2 mb-2">
           <span className={`mt-[5px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${a.dot}`} />
@@ -170,35 +249,16 @@ function SandboxCard({ item }) {
   )
 }
 
-function ImagePlaceholder({ label, icon = '🖼' }) {
-  return (
-    <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-[#b0bab5]">
-      <span className="text-3xl">{icon}</span>
-      <p className="font-body text-[0.72rem] tracking-wide">Ajoute une image</p>
-    </div>
-  )
-}
-
-function LogoPlaceholder({ color }) {
-  return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="w-16 h-16 rounded-2xl border-2 flex items-center justify-center" style={{ borderColor: color + '40' }}>
-        <span style={{ color }} className="font-heading font-semibold text-2xl">LJ</span>
-      </div>
-      <p className="font-body text-[0.7rem] tracking-widest uppercase" style={{ color: color + '60' }}>Ajoute ton logo</p>
-    </div>
-  )
-}
-
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Sandbox() {
   const pageRef = useRef(null)
   useReveal(pageRef)
+  const [lightboxItem, setLightboxItem] = useState(null)
 
   return (
     <div ref={pageRef} className="min-h-screen">
       <section className="px-6 md:px-12 pt-32 pb-10 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, rgba(24,143,126,0.07) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-
         <div className="relative z-10">
           <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-orange mb-3">
             <span className="w-6 h-px bg-bright-orange" />
@@ -224,11 +284,8 @@ export default function Sandbox() {
 
         <div className="hidden md:flex flex-wrap gap-8 items-start justify-center py-8">
           {sandboxItems.map((item, i) => (
-            <div
-              key={item.id}
-              style={{ marginTop: [0, 40, -20, 60, 15, -30, 50, 10][i % 8] }}
-            >
-              <SandboxCard item={item} />
+            <div key={item.id} style={{ marginTop: [0, 40, -20, 60, 15, -30, 50, 10][i % 8] }}>
+              <SandboxCard item={item} onVideoOpen={setLightboxItem} />
             </div>
           ))}
         </div>
@@ -236,11 +293,15 @@ export default function Sandbox() {
         <div className="md:hidden flex flex-col gap-6 items-center">
           {sandboxItems.map(item => (
             <div key={item.id} style={{ transform: 'none' }}>
-              <SandboxCard item={{ ...item, rotate: 0, size: 'md' }} />
+              <SandboxCard item={{ ...item, rotate: 0, size: 'md' }} onVideoOpen={setLightboxItem} />
             </div>
           ))}
         </div>
       </section>
+
+      {lightboxItem && (
+        <VideoLightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
+      )}
 
       <Footer />
     </div>

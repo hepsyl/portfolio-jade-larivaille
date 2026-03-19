@@ -18,7 +18,7 @@ export default function AllProjects() {
 
   const filtered = active === 'tous'
     ? allProjects
-    : allProjects.filter(p => p.filter.Contains(active))
+    : allProjects.filter(p => p.filter.includes(active))
 
   const count = (key) =>
     key === 'tous' ? allProjects.length : allProjects.filter(p => p.filter.includes(key)).length
@@ -44,8 +44,8 @@ export default function AllProjects() {
                 className={`
                   font-body text-sm font-semibold px-5 py-2 rounded-full border transition-all duration-200
                   ${active === f.key
-                    ? 'bg-bright-green text-white border-bright-green shadow-[0_4px_14px_rgba(24,143,126,0.25)]'
-                    : 'bg-transparent text-[#4a5a52] border-black/15 hover:border-bright-green/50 hover:text-bright-green'
+                    ? 'bg-almost-black text-white shadow-[0_4px_14px_rgba(24,143,126,0.25)]'
+                    : 'bg-transparent text-[#4a5a52] border-black/15 hover:border-black/50'
                   }
                 `}
               >

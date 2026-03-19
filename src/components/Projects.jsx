@@ -95,7 +95,7 @@ export const allProjects = [
 ]
 
 const tagColors = {
-  dev:    'bg-bright-green/12 text-dark-green',
+  dev:    'bg-bright-green/20 text-dark-green',
   design: 'bg-bright-orange/10 text-dark-orange',
   other:  'bg-black/7 text-[#4a5a52]',
 }
