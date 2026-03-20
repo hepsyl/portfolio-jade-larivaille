@@ -8,6 +8,7 @@ import godotLogo from '../assets/godot_logo.jfif'
 import pixel_art from '../assets/pixel_art_assets.png'
 import YoutubeLogo from '../assets/youtube_cover.png'
 import redes from '../assets/redes.png'
+import maisonLeo from '../assets/Maison_Leo_v2.png'
 
 export const sandboxItems = [
   {
@@ -27,7 +28,7 @@ export const sandboxItems = [
     id: 'lebowski',
     type: 'image',
     label: 'Création de logo',
-    desc: "Participation au concours de logos de BALO, création d'un logo pour un bowling inspiré du film The Big Lebowski.",
+    desc: "Participation au concours de logos de BALO : création d'un logo pour un bowling inspiré du film The Big Lebowski.",
     tech: ['Figma', 'Identité graphique'],
     image: lebowski,
     accent: 'orange',
@@ -58,7 +59,7 @@ export const sandboxItems = [
     youtubeId: 'pAD-u5XveQ0',
     accent: 'orange',
     isClickable: true,
-    colSpan: 'md:col-span-3',
+    colSpan: 'md:col-span-2',
     rowSpan: 'md:row-span-2',
   },
   {
@@ -71,7 +72,7 @@ export const sandboxItems = [
     src: '/assets/Godot_2D.mp4',
     accent: 'green',
     isClickable: true,
-    colSpan: 'md:col-span-1',
+    colSpan: 'md:col-span-2',
     rowSpan: 'md:row-span-1',
   },
   {
@@ -84,6 +85,18 @@ export const sandboxItems = [
     accent: 'orange',
     isClickable: false,
     colSpan: 'md:col-span-2',
+    rowSpan: 'md:row-span-1',
+  },
+  {
+    id: 'maison_leo',
+    type: 'image',
+    label: 'Maison de Léo',
+    desc: "Logo fictif pour un artisan de rénovation de meubles anciens.",
+    tech: ['Figma', 'Logo'],
+    image: maisonLeo,
+    accent: 'orange',
+    isClickable: false,
+    colSpan: 'md:col-span-1',
     rowSpan: 'md:row-span-1',
   },
 ]
