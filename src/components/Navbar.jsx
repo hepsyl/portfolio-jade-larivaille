@@ -7,7 +7,6 @@ const links = [
   { label: 'Projets',  to: '/projects', section: null      },
   { label: 'Sandbox',  to: '/sandbox',  section: null      },
   { label: 'Qui suis-je ?', to: '/about',   section: null       },
-  { label: 'Contact',  to: '/about',   section: 'contact'  },
 ]
 
 export default function Navbar() {
