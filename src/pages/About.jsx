@@ -10,7 +10,7 @@ const experiences = [
     date: 'Depuis sept. 2025',
     tasks: [
       'Conception de prototypes Figma de sites web',
-      "Création d'identité graphique",
+      "Création de logo et identité graphique",
     ],
   },
   {
@@ -29,7 +29,7 @@ const experiences = [
     role: 'Stage - UX Design & Front-end',
     date: 'Juin / Juillet 2025',
     tasks: [
-      "Conception de prototypes Figma d'un logiciel et de deux sites web vitrine",
+      "Conception de prototypes Figma haute-fidélité d'un logiciel et de deux sites web vitrine",
       'Développement front-end du logiciel Izired',
     ],
   },
@@ -40,20 +40,20 @@ const experiences = [
     tasks: [
       'Gestion des réseaux sociaux et de la communication',
       'Analyse des performances et définition de la stratégie de communication',
-      "Organisation d'évènements (forums, ateliers, conférences…)",
+      "Organisation d'évènements internes et externes (forums, ateliers, conférences…)",
     ],
   },
 ]
 
-const devTags  = ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', '.NET / C#', 'Twig', 'Python']
-const toolTags = ['Git / Github', 'VS Code']
-const designTags = ['Figma', 'UX Design', 'UI Design', 'Prototypage', 'Identité graphique', 'Motion Design', 'Jitter']
+const devTags  = ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', '.NET / C#', 'Twig', 'Python', 'Matlab']
+const toolTags = ['Git / Github', 'VS Code', 'Jira']
+const designTags = ['Figma', 'UX Design', 'UI Design', 'Prototypage', 'Recherche utilisateur', 'Wireframes', 'Identité graphique', 'Motion Design', 'Jitter']
 const otherTags  = ['Canva', 'Maya 3D']
 
 const languages = [
-  { name: 'Français', level: 'Natif',    note: 'Langue maternelle',                          color: 'text-bright-green' },
+  { name: 'Français', level: 'Natif',    note: 'Langue maternelle', color: 'text-bright-green' },
   { name: 'Anglais',  level: 'Bilingue', note: 'Cambridge C1 (2022) · TOEIC 990/990 (2026)', color: 'text-bright-orange' },
-  { name: 'Espagnol', level: 'B1 – B2',  note: 'Niveau intermédiaire avancé',                color: 'text-bright-green' },
+  { name: 'Espagnol', level: 'B1 – B2',  note: 'Niveau intermédiaire', color: 'text-bright-green' },
 ]
 
 export default function About() {
