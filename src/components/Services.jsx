@@ -7,7 +7,7 @@ const services = [
       'Wireframing & prototypage Figma',
       'UI Design & identité graphique',
       'UX Research & tests utilisateurs',
-      'Motion design & micro-interactions',
+      'Micro-interactions',
     ],
     icon: <DesignIcon />,
   },
@@ -19,7 +19,7 @@ const services = [
       'Intégration HTML / CSS / JavaScript',
       'Développement React & TypeScript',
       'Accessibilité & performance web',
-      'Collaboration design → code',
+      'Lien design / code',
     ],
     icon: <DevIcon />,
   },
@@ -77,15 +77,7 @@ export default function Services() {
 }
 
 function DesignIcon() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-      <path d="M4 22 C4 22 8 18 14 18 C20 18 24 14 24 8 C24 5.8 22.2 4 20 4 C17.8 4 16 5.8 16 8 C16 10.2 14.2 12 12 12 C9.8 12 8 13.8 8 16" stroke="#F05F05" strokeWidth="2" strokeLinecap="round"/>
-      <circle cx="6" cy="20" r="2.5" fill="#F05F05"/>
-      <circle cx="21" cy="6" r="1.8" fill="#F05F05" opacity="0.4"/>
-      <circle cx="23" cy="12" r="1.5" fill="#F05F05" opacity="0.65"/>
-      <circle cx="17" cy="21" r="1.5" fill="#F05F05" opacity="0.5"/>
-    </svg>
-  )
+  return <img src="./assets/paint-brush-svgrepo-com.svg" alt="Design Icon" width="28" height="28" fill="#F05F05" />;
 }
 
 function DevIcon() {
