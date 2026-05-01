@@ -23,7 +23,7 @@ import salsHero from '../assets/sals_cover.png'
 import salsFiltre from '../assets/sals_filtre.png'
 import salsContenu from '../assets/sals_contenu.png'
 import salsWF from '../assets/sals_wf.png'
-import salsPublications from '../assets/sals_publications.png'
+import salsPublications from '../assets/sals_publications.jpeg'
 import octoAccueil from '../assets/octotune_accueil.png'
 import octoCalendrier from '../assets/octotune_calendrier.png'
 import octoMessagerie from '../assets/octotune_mp.png'
@@ -481,7 +481,7 @@ const projects = {
       },
       {
         heading: "Focus : le système de filtrage",
-        content: "Il a donc fallu réaliser une analyse des sites concurrents, afin de préciser les besoins du client et nous avons notamment fait un focus particulier sur le système de filtrage, essentiel à l’expérience utilisateur pour un site regroupant autant de contenus. Nous avons itéré plusieurs systèmes, et cela malgré un laps de temps court pour maquetter les 5 écrans demandés. Nous avons fini par choisir un système multi-catégoriel, avec un filtrage par format, thématique et/ou par mot clef.",
+        content: "Nous avons notamment fait un focus particulier sur le système de filtrage, essentiel à l’expérience utilisateur pour un site regroupant autant de contenus. Nous avons itéré plusieurs systèmes, et cela malgré un laps de temps court pour maquetter les 5 écrans demandés. Nous avons fini par choisir un système multi-catégoriel, avec un filtrage par format, thématique et/ou par mot clef.",
       },
     ],
     objectives: ["Designer 5 écrans desktop", "Respecter la charte graphique de l'Université de Bordeaux"],
