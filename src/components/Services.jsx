@@ -1,3 +1,5 @@
+import PaintBrushIcon from '../assets/paint-brush-svgrepo-com.svg'
+
 const services = [
   {
     type: 'design',
@@ -77,7 +79,7 @@ export default function Services() {
 }
 
 function DesignIcon() {
-  return <img src="./assets/paint-brush-svgrepo-com.svg" alt="Design Icon" width="28" height="28" fill="#F05F05" />;
+  return <img src={PaintBrushIcon} alt="Design Icon" width="28" height="28" />
 }
 
 function DevIcon() {
