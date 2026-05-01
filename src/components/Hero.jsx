@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="hero-anim animate-fade-up-4 flex gap-3 items-center flex-wrap">
           <button
             onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-flex items-center gap-2 bg-bright-green text-almost-white font-body text-sm font-semibold tracking-wide px-7 py-3.5 rounded-full transition-all duration-200 hover:bg-dark-green hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(24,143,126,0.25)] hover:shadow-[0_8px_28px_rgba(24,143,126,0.35)]"
+            className="inline-flex items-center gap-2 bg-dark-green text-almost-white font-body text-sm font-semibold tracking-wide px-7 py-3.5 rounded-full transition-all duration-200 hover:bg-dark-green hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(24,143,126,0.25)] hover:shadow-[0_8px_28px_rgba(24,143,126,0.35)]"
           >
             Découvrir mes services
             <ArrowIcon />

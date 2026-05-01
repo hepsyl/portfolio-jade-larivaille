@@ -578,7 +578,7 @@ export default function ProjectDetail() {
   }
 
   const isDesign     = project.type === 'design'
-  const accent       = isDesign ? 'text-bright-orange'      : 'text-bright-green'
+  const accent       = isDesign ? 'text-dark-orange'      : 'text-dark-green'
   const accentBg     = isDesign ? 'bg-bright-orange'        : 'bg-bright-green'
   const accentSoft   = isDesign ? 'bg-bright-orange/10'     : 'bg-bright-green/10'
   const accentBorder = isDesign ? 'border-bright-orange/30' : 'border-bright-green/30'
@@ -612,7 +612,7 @@ export default function ProjectDetail() {
       <section className={`relative min-h-[65vh] flex flex-col justify-end px-6 md:px-12 pt-32 pb-12 overflow-hidden bg-gradient-to-br ${project.gradient}`}>
         <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 24px)' }} />
 
-        <button onClick={() => navigate(-1)} className="absolute top-24 left-6 md:left-12 flex items-center gap-2 text-white hover:underline font-body text-sm font-medium transition-colors">
+        <button onClick={() => navigate(-1)} className="absolute top-24 left-6 md:left-12 flex items-center gap-2 text-white hover:underline font-body text-sm font-medium transition-colors" aria-label="Retour à la liste des projets">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           Retour
         </button>
@@ -666,7 +666,7 @@ export default function ProjectDetail() {
                     className={`inline-flex items-center gap-2 text-sm font-semibold font-body px-5 py-2.5 rounded-full border transition-all hover:-translate-y-0.5 ${isDesign ? 'border-bright-orange/40 text-bright-orange hover:bg-bright-orange/10' : 'border-bright-green/40 text-bright-green hover:bg-bright-green/10'}`}
                   >
                     {l.label}
-                    {l.note && <span className="font-normal text-xs opacity-60">{l.note}</span>}
+                    {l.note && <span className="font-normal text-xs text-almost-black opacity-60">{l.note}</span>}
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
                     </svg>

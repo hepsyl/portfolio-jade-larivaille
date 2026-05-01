@@ -38,7 +38,7 @@ export default function Navbar() {
         to="/"
         onClick={e => { e.preventDefault(); navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
       >
-        <img src={logo} alt="LJ Logo" className="h-9 w-auto" />
+        <img src={logo} alt="LJ Logo" className='h-10 w-auto' />
       </Link>
 
       <div className="flex items-center gap-6 md:gap-10">
@@ -48,7 +48,7 @@ export default function Navbar() {
             href={link.to}
             onClick={e => handleClick(e, link)}
             className={`
-              relative font-body text-sm tracking-wide transition-colors duration-200
+              relative font-body text-m tracking-wide transition-colors duration-200
               after:absolute after:bottom-[-3px] after:left-0 after:h-[1.5px] after:bg-bright-green
               after:transition-all after:duration-300
               ${isActive(link)

@@ -69,8 +69,8 @@ export default function About() {
   return (
     <div ref={pageRef}>
       <section id="about" className="px-12 pt-32 pb-24">
-        <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-green mb-3">
-          <span className="w-6 h-px bg-bright-green" />
+        <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-green mb-3">
+          <span className="w-6 h-px bg-dark-green" />
           Qui suis-je ?
         </div>
         <h2 className="font-heading font-semibold text-[clamp(2rem,3.5vw,3rem)] tracking-tight leading-[1.1] mb-12">
@@ -87,9 +87,9 @@ export default function About() {
             </p>
             <p>
               J'aime perfectionner autant la technique via le{' '}
-              <span className="text-bright-green font-semibold">développement</span>{' '}
+              <span className="text-dark-green font-semibold">développement</span>{' '}
               que la{' '}
-              <span className="text-bright-orange font-semibold" data-cursor="orange">créativité</span>{' '}
+              <span className="text-dark-orange font-semibold" data-cursor="orange">créativité</span>{' '}
               dans la conception de mes projets.
             </p>
             <div className="flex gap-4 py-2 flex-row">
@@ -112,11 +112,11 @@ export default function About() {
           </div>
 
           <div className="reveal">
-            <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-orange mb-6">
-              <span className="w-6 h-px bg-bright-orange" />
+            <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-orange mb-6">
+              <span className="w-6 h-px bg-dark-orange" />
               Expérience
             </div>
-            <div className="divide-y divide-bright-green/15 border-t border-bright-green/15">
+            <div className="divide-y divide-dark-green/15 border-t border-dark-green/15">
               {experiences.map((e) => (
                 <div key={e.company + e.role} className="py-6">
                   <div className="flex justify-between items-start mb-2">
@@ -180,8 +180,8 @@ export default function About() {
       </section>
 
       <section id="languages" className="bg-[#f5f7f5] px-12 py-24">
-        <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-green mb-3">
-          <span className="w-6 h-px bg-bright-green" />
+        <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-green mb-3">
+          <span className="w-6 h-px bg-dark-green" />
           Langues
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">

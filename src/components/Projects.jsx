@@ -112,7 +112,7 @@ export function ProjectCard({ p, navigate }) {
           <img
             src={p.image}
             alt={p.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-auto h-auto object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className={`w-full h-[240px] bg-gradient-to-br ${p.gradient} relative flex items-center justify-center`}>
@@ -138,7 +138,7 @@ export function ProjectCard({ p, navigate }) {
             </span>
           ))}
         </div>
-        <h3 className="font-heading font-semibold text-almost-black mb-2.5 leading-tight text-[1.4rem]">{p.title}</h3>
+        <h1 className="font-heading font-semibold text-almost-black mb-2.5 leading-tight text-[1.4rem]">{p.title}</h1>
         <p className="font-body text-[0.83rem] leading-[1.7] text-[#4a5a52] mb-5">{p.desc}</p>
         <div className="flex flex-wrap gap-1.5">
           {p.tech.map(t => (
@@ -158,7 +158,7 @@ export default function Projects() {
     <section id="projects" className="px-6 md:px-12 py-24">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-14">
         <div>
-          <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-orange mb-3">
+          <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-orange mb-3">
             <span className="w-6 h-px bg-bright-orange" />
             Mes projets
           </div>

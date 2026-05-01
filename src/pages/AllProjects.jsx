@@ -28,8 +28,8 @@ export default function AllProjects() {
       <section className="px-6 md:px-12 pt-32 pb-24">
 
         <div className="mb-14">
-          <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-orange mb-3">
-            <span className="w-6 h-px bg-bright-orange" />
+          <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-orange mb-3">
+            <span className="w-6 h-px bg-dark-orange" />
             Portfolio
           </div>
           <h1 className="font-heading font-semibold text-[clamp(2.5rem,5vw,4rem)] tracking-tight leading-[1.05] mb-10">
