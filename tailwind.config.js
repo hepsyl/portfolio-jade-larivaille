@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -48,6 +49,9 @@ export default {
         'float-blob2': 'floatBlob2 10s ease-in-out infinite',
       },
     },
+  },
+  variants: {
+    stroke: ['hover', 'focus'], 
   },
   plugins: [],
 }

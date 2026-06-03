@@ -1,26 +1,30 @@
 import { Routes, Route } from 'react-router-dom'
+import {ThemeProvider} from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Cursor from './components/Cursor'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
+import Work from './pages/Work'
+import Craft from './pages/Craft'
+import Lab from './pages/Lab'
 import About from './pages/About'
 import ProjectDetail from './pages/ProjectDetail'
-import AllProjects from './pages/AllProjects'
-import Sandbox from './pages/Sandbox'
-import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
+
   return (
-    <>
+    <ThemeProvider>
       <ScrollToTop />
       <Cursor />
       <Navbar />
       <Routes>
-        <Route path=""            element={<Home />} />
-        <Route path="about"       element={<About />} />
-        <Route path="projects"    element={<AllProjects />} />
+        <Route path=""         element={<Home />}  />
+        <Route path="work"     element={<Work />}  />
+        <Route path="craft"    element={<Craft />} />
+        <Route path="lab"      element={<Lab />}   />
+        <Route path="about"    element={<About />} />
         <Route path="project/:id" element={<ProjectDetail />} />
-        <Route path="sandbox"     element={<Sandbox />} />
       </Routes>
-    </>
+    </ThemeProvider>
   )
 }

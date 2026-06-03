@@ -2,58 +2,123 @@
 @tailwind components;
 @tailwind utilities;
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Custom cursor ─────────────────────────────────────────────────────────── */
 * { cursor: none; }
 a, button { cursor: none; }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #FCFCFC; }
+/* ── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #188F7E; border-radius: 2px; }
 
-
+/* ── Reveal animation ──────────────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* ── Hero animations ───────────────────────────────────────────────────────── */
 .hero-anim { opacity: 0; }
 
-.divider-line-go-left  { background: linear-gradient(to right,  transparent, #188F7E); }
-.divider-line-go-right { background: linear-gradient(to left,   transparent, #F05F05); }
-.divider-line-og-left  { background: linear-gradient(to right,  transparent, #F05F05); }
-.divider-line-og-right { background: linear-gradient(to left,   transparent, #188F7E); }
-.divider-line-gg-left  { background: linear-gradient(to right,  transparent, #188F7E); }
-.divider-line-gg-right { background: linear-gradient(to left,   transparent, #188F7E); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up-1 { animation: fadeUp 0.7s ease forwards 0.1s; }
+.animate-fade-up-2 { animation: fadeUp 0.7s ease forwards 0.25s; }
+.animate-fade-up-3 { animation: fadeUp 0.7s ease forwards 0.4s; }
+.animate-fade-up-4 { animation: fadeUp 0.7s ease forwards 0.55s; }
+.animate-fade-in   { animation: fadeUp 0.9s ease forwards 0.5s; }
 
-@media (min-width: 768px) {
-  .project-featured {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-  }
-  .project-featured .proj-img {
-    height: 100%;
-    min-height: 300px;
-  }
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
- 
 @keyframes fadeInFast {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-.animate-fade-in-fast {
-  animation: fadeInFast 0.25s ease-in-out;
+.animate-fade-in-fast { animation: fadeInFast 0.25s ease-in-out; }
+
+/* ── Marquee ───────────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 30s linear infinite; }
+
+/* ── Dark mode transition ──────────────────────────────────────────────────── */
+html {
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+/* ── Page transition ───────────────────────────────────────────────────────── */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: pageIn 0.4s ease forwards; }
+
+.draw {
+  position: relative;
+  transition: color 0.25s;
+}
+
+.draw::before,
+.draw::after {
+  content: '';
+  position: absolute;
+  border: 2px solid transparent;
+  width: 0;
+  height: 0;
+}
+
+.draw::before {
+  top: 0;
+  left: 0;
+}
+
+.draw::after {
+  bottom: 0;
+  right: 0;
+}
+
+.draw:hover {
+  color: #188F7E; /* bright-green */
+}
+
+.draw:hover::before,
+.draw:hover::after {
+  width: 100%;
+  height: 100%;
+}
+
+.draw:hover::before {
+  border-top-color: #188F7E;
+  border-right-color: #188F7E;
+  transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+}
+
+.draw:hover::after {
+  border-bottom-color: #188F7E;
+  border-left-color: #188F7E;
+  transition:
+    border-color 0s ease-out 0.3s,
+    width 0.15s ease-out 0.3s,
+    height 0.15s ease-out 0.4s;
+}
+
+.grid-pattern {
+  background-color: #FCFCFC;
+  background-image: linear-gradient(rgba(24, 143, 126, 0.03) 1.18px, transparent 1.18px), linear-gradient(to right, rgba(24, 143, 126, 0.03) 1.18px, transparent 1.18px);
+  background-size: 63.6px 63.6px, 63.6px 63.6px;
+  background-repeat: repeat, repeat;
+  background-position: 0 0, 0 0;
+}
+
+.dark .grid-pattern {
+  background-color: #001407
+}

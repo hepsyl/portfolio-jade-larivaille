@@ -1,132 +1,83 @@
 import { useRef } from 'react'
-import SectionDivider from '../components/SectionDivider'
 import Footer from '../components/Footer'
-import { useReveal } from '../components/useReveal'
-
-const experiences = [
-  {
-    company: 'EENOV',
-    role: 'Freelance UI Designer',
-    date: 'Depuis sept. 2025',
-    tasks: [
-      'Conception de prototypes Figma de sites web',
-      "Création de logo et identité graphique",
-    ],
-  },
-  {
-    company: 'Institut des Maladies Neurodégénératives',
-    role: 'Stage - Ingénieure de recherche',
-    date: 'Janvier - Avril 2026',
-    tasks: [
-      "Création d'une pipeline de traitement de données d'acquisitions d'IRM fonctionnelle",
-      "Programmation Python, Matlab",
-      "Passation d'IRM fonctionnelles sur sujets sains",
-      "Rédaction de documentation pour la pérenité des acquis"
-    ],
-  },
-  {
-    company: 'EENOV',
-    role: 'Stage - UX Design & Front-end',
-    date: 'Juin / Juillet 2025',
-    tasks: [
-      "Conception de prototypes Figma haute-fidélité d'un logiciel et de deux sites web vitrine",
-      'Développement front-end du logiciel Izired',
-    ],
-  },
-  {
-    company: 'i2c - Junior Entreprise',
-    role: 'Responsable Communication',
-    date: 'Depuis Février 2025',
-    tasks: [
-      'Gestion des réseaux sociaux et de la communication',
-      'Analyse des performances et définition de la stratégie de communication',
-      "Organisation d'évènements internes et externes (forums, ateliers, conférences…)",
-    ],
-  },
-]
-
-const devTags  = ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', '.NET / C#', 'Twig', 'Python', 'Matlab']
-const toolTags = ['Git / Github', 'VS Code', 'Jira']
-const designTags = ['Figma', 'UX Design', 'UI Design', 'Prototypage', 'Recherche utilisateur', 'Wireframes', 'Identité graphique', 'Motion Design', 'Jitter']
-const otherTags  = ['Canva', 'Maya 3D']
-
-const languages = [
-  { name: 'Français', level: 'Natif',    note: 'Langue maternelle', color: 'text-bright-green' },
-  { name: 'Anglais',  level: 'Bilingue', note: 'Cambridge C1 (2022) · TOEIC 990/990 (2026)', color: 'text-bright-orange' },
-  { name: 'Espagnol', level: 'B1 – B2',  note: 'Niveau intermédiaire', color: 'text-bright-green' },
-]
+import { useReveal } from '../hooks/useReveal'
+import { experiences, skills, languages } from '../data/content'
+import { useDarkMode } from "../context/ThemeContext";
 
 export default function About() {
   const pageRef = useRef(null)
+  const { darkMode } = useDarkMode();
   useReveal(pageRef)
 
-  function handleClick() {
-      const baseUrl = import.meta.env.BASE_URL;
-      const cleanPath = `${baseUrl}//assets/CV_Jade_Larivaille.pdf`.replace(/\/+/g, '/');
-      window.open(cleanPath, '_blank');
-    }
+  const handleCV = () => {
+    const baseUrl = import.meta.env.BASE_URL
+    window.open(`${baseUrl}/assets/CV_Jade_Larivaille.pdf`.replace(/\/+/g, '/'), '_blank')
+  }
 
   return (
-    <div ref={pageRef}>
-      <section id="about" className="px-12 pt-32 pb-24">
-        <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-green mb-3">
-          <span className="w-6 h-px bg-dark-green" />
-          Qui suis-je ?
+    <div ref={pageRef} className="page-enter">
+      {/* ── Bio ── */}
+      <section className="px-6 md:px-12 pt-32 pb-24">
+        <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-green dark:text-bright-green mb-3">
+          <span className="w-6 h-px bg-bright-green" />
+          About me
         </div>
-        <h2 className="font-heading font-semibold text-[clamp(2rem,3.5vw,3rem)] tracking-tight leading-[1.1] mb-12">
+        <h2 className="font-heading font-semibold text-[clamp(2rem,3.5vw,3rem)] tracking-tight leading-[1.1] text-almost-black dark:text-almost-white mb-12">
           Design graphique, ergonomie cognitive<br />&amp; développement
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-          <div className="reveal space-y-5 font-body text-base leading-relaxed text-[#3a4a42]">
+          {/* Bio text */}
+          <div className="reveal space-y-5 font-body text-base leading-relaxed text-[#3a4a42] dark:text-white/50">
             <p>
               Passionnée par le développement web et le design d'interfaces, je suis actuellement en 2ème année à l'École Nationale Supérieure de Cognitique.
             </p>
             <p>
-              Ma formation centrée sur l'utilisateur et les interfaces Homme-Machine me permet de développer mes connaissances techniques ainsi que ma sensibilité à l'accessibilité des interfaces que je crée et leur intuitivité.
+              Ma formation centrée sur l'utilisateur et les interfaces Homme-Machine me permet de développer mes connaissances techniques ainsi que ma sensibilité à l'accessibilité des interfaces.
             </p>
             <p>
               J'aime perfectionner autant la technique via le{' '}
-              <span className="text-dark-green font-semibold">développement</span>{' '}
+              <span className="text-dark-green dark:text-bright-green font-semibold">développement</span>{' '}
               que la{' '}
-              <span className="text-dark-orange font-semibold" data-cursor="orange">créativité</span>{' '}
+              <span className="text-dark-orange dark:text-bright-orange font-semibold">créativité</span>{' '}
               dans la conception de mes projets.
             </p>
-            <div className="flex gap-4 py-2 flex-row">
+            <div className="flex gap-4 pt-2 flex-wrap">
               <button
-                onClick={() => handleClick()}
-                className="inline-flex items-center gap-2.5 bg-almost-black text-white font-body text-sm font-semibold px-8 py-4 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,9,3,0.15)]"
+                onClick={handleCV}
+                className="inline-flex items-center gap-2.5 bg-almost-black dark:bg-almost-white text-white dark:text-almost-black font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all hover:-translate-y-0.5"
               >
                 Voir mon CV
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+                <ArrowIcon />
               </button>
               <a
-                href={"https://github.com/hepsyl"}
-                className="inline-flex items-center gap-2.5 border-dark-green border-2 text-dark-green font-body text-sm font-semibold px-8 py-4 rounded-full transition-all hover:bg-dark-green hover:text-white hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,9,3,0.15)]"
+                href="https://github.com/hepsyl"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2.5 border-2 border-dark-green dark:border-bright-green text-dark-green dark:text-bright-green font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all hover:bg-dark-green dark:hover:bg-bright-green hover:text-white hover:-translate-y-0.5"
               >
                 Voir mon GitHub
-              </a>   
-            </div>       
+              </a>
+            </div>
           </div>
 
+          {/* Experience */}
           <div className="reveal">
-            <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-orange mb-6">
+            <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-orange dark:text-bright-orange mb-6">
               <span className="w-6 h-px bg-dark-orange" />
               Expérience
             </div>
-            <div className="divide-y divide-dark-green/15 border-t border-dark-green/15">
+            <div className="divide-y divide-black/8 dark:divide-white/8 border-t border-black/8 dark:border-white/8">
               {experiences.map((e) => (
                 <div key={e.company + e.role} className="py-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="font-heading font-semibold text-[0.9rem] text-almost-black">{e.company}</span>
-                    <span className="text-[0.72rem] font-medium text-bright-green bg-bright-green/10 px-2.5 py-0.5 rounded-full whitespace-nowrap">{e.date}</span>
+                  <div className="flex justify-between items-start mb-1.5 gap-4">
+                    <span className="font-heading font-semibold text-[0.9rem] text-almost-black dark:text-almost-white">{e.company}</span>
+                    <span className="text-[0.68rem] font-medium text-bright-green bg-bright-green/10 px-2.5 py-0.5 rounded-full whitespace-nowrap flex-shrink-0">{e.date}</span>
                   </div>
-                  <p className="text-[0.82rem] font-semibold text-bright-orange tracking-wide mb-2.5">{e.role}</p>
+                  <p className="text-[0.78rem] font-semibold text-bright-orange tracking-wide mb-2">{e.role}</p>
                   <ul className="space-y-1">
                     {e.tasks.map((t) => (
-                      <li key={t} className="relative pl-4 text-[0.82rem] text-[#4a5a52]">
+                      <li key={t} className="relative pl-4 text-[0.8rem] text-[#4a5a52] dark:text-white/40">
                         <span className="absolute left-0 top-[9px] w-1.5 h-1.5 rounded-full bg-bright-green" />
                         {t}
                       </li>
@@ -139,15 +90,14 @@ export default function About() {
         </div>
       </section>
 
-      <section id="skills" className="relative bg-forest-green px-12 py-24 overflow-hidden " data-cursor="white">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(24,143,126,0.12) 1px, transparent 1px)', backgroundSize: '28px 28px' }}
-        />
+      {/* ── Skills ── */}
+      <section className="relative bg-forest-green px-6 md:px-12 py-24 overflow-hidden lj-texture">
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(24,143,126,0.12) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="relative z-10">
-          <div className="mb-16">
-            <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-green/90 mb-3">
-              <span className="w-6 h-px bg-bright-green/90" />
+          <div className="mb-12">
+            <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-green/70 mb-3">
+              <span className="w-6 h-px bg-bright-green/70" />
               Compétences
             </div>
             <h2 className="font-heading font-semibold text-[clamp(2rem,3.5vw,3rem)] tracking-tight leading-[1.1] text-almost-white">
@@ -155,41 +105,29 @@ export default function About() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="reveal group bg-white/4 border border-white/8 rounded-2xl p-9 backdrop-blur-sm transition-all duration-300 hover:border-bright-green/40 hover:-translate-y-1">
-              <div className="w-11 h-11 rounded-xl bg-bright-green/20 flex items-center justify-center text-2xl mb-5">🖥️</div>
-              <h3 className="font-heading font-semibold text-[1.1rem] text-almost-white mb-1.5">Développement Web</h3>
-              <p className="font-body text-[0.8rem] text-white/50 mb-5 leading-relaxed">Technologies front-end et frameworks pour des interfaces robustes.</p>
-              <div className="flex flex-wrap gap-2">
-                {devTags.map(t => <Tag key={t} color="green">{t}</Tag>)}
-                {toolTags.map(t => <Tag key={t} color="neutral">{t}</Tag>)}
-              </div>
-            </div>
-
-            <div className="reveal group bg-white/4 border border-white/8 rounded-2xl p-9 backdrop-blur-sm transition-all duration-300 hover:border-bright-orange/40 hover:-translate-y-1" data-cursor="orange">
-              <div className="w-11 h-11 rounded-xl bg-bright-orange/20 flex items-center justify-center text-2xl mb-5">🎨</div>
-              <h3 className="font-heading font-semibold text-[1.1rem] text-almost-white mb-1.5">Design & UX/UI</h3>
-              <p className="font-body text-[0.8rem] text-white/50 mb-5 leading-relaxed">Prototypage, identités visuelles et expérience utilisateur.</p>
-              <div className="flex flex-wrap gap-2">
-                {designTags.map(t => <Tag key={t} color="orange">{t}</Tag>)}
-                {otherTags.map(t => <Tag key={t} color="neutral">{t}</Tag>)}
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <SkillCard title="Développement Web" emoji="🖥️" accent="green">
+              {[...skills.dev, ...skills.tools].map(t => <Tag key={t} color="green">{t}</Tag>)}
+            </SkillCard>
+            <SkillCard title="Design & UX/UI" emoji="🎨" accent="orange">
+              {[...skills.design, ...skills.other].map(t => <Tag key={t} color="orange">{t}</Tag>)}
+            </SkillCard>
           </div>
         </div>
       </section>
 
-      <section id="languages" className="bg-[#f5f7f5] px-12 py-24">
-        <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-green mb-3">
-          <span className="w-6 h-px bg-dark-green" />
+      {/* ── Languages ── */}
+      <section className="px-6 md:px-12 py-24 bg-almost-white dark:bg-forest-green">
+        <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-green dark:text-bright-green mb-8">
+          <span className="w-6 h-px bg-bright-green" />
           Langues
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {languages.map((l) => (
-            <div key={l.name} className="reveal bg-almost-white rounded-2xl p-7 border border-bright-green/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(24,143,126,0.1)]">
-              <p className="font-heading font-semibold text-[1.1rem] text-almost-black mb-1">{l.name}</p>
-              <p className={`text-[0.75rem] font-semibold tracking-[0.08em] uppercase mb-2 ${l.color}`}>{l.level}</p>
-              <p className="font-body text-[0.78rem] text-[#6a7a72] leading-relaxed">{l.note}</p>
+            <div key={l.name} className="reveal bg-almost-white dark:bg-white/4 rounded-2xl p-7 border border-black/8 dark:border-white/8 transition-all duration-300 hover:-translate-y-1">
+              <p className="font-heading font-semibold text-[1.1rem] text-almost-black dark:text-almost-white mb-1">{l.name}</p>
+              <p className="text-[0.72rem] font-semibold tracking-[0.08em] uppercase mb-2 text-bright-green">{l.level}</p>
+              <p className="font-body text-[0.78rem] text-[#6a7a72] dark:text-white/40 leading-relaxed">{l.note}</p>
             </div>
           ))}
         </div>
@@ -200,15 +138,32 @@ export default function About() {
   )
 }
 
+function SkillCard({ title, emoji, accent, children }) {
+  return (
+    <div className={`reveal bg-white/4 border border-white/8 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:border-${accent === 'green' ? 'bright-green' : 'bright-orange'}/40`}>
+      <div className={`w-11 h-11 rounded-xl ${accent === 'green' ? 'bg-bright-green/20' : 'bg-bright-orange/20'} flex items-center justify-center text-2xl mb-5`}>{emoji}</div>
+      <h3 className="font-heading font-semibold text-[1.1rem] text-almost-white mb-5">{title}</h3>
+      <div className="flex flex-wrap gap-2">{children}</div>
+    </div>
+  )
+}
+
 function Tag({ children, color }) {
-  const styles = {
-    green:   'bg-bright-green/20 text-[#4ecfbe] border border-bright-green/30',
-    orange:  'bg-bright-orange/15 text-[#f5894e] border border-bright-orange/25',
-    neutral: 'bg-white/8 text-white/60 border border-white/10',
+  const s = {
+    green:  'bg-bright-green/20 text-[#4ecfbe] border border-bright-green/30',
+    orange: 'bg-bright-orange/15 text-[#f5894e] border border-bright-orange/25',
   }
   return (
-    <span className={`inline-block text-[0.72rem] font-semibold px-3 py-1 rounded-full tracking-wide transition-transform hover:-translate-y-0.5 ${styles[color]}`}>
+    <span className={`inline-block text-[0.72rem] font-semibold px-3 py-1 rounded-full tracking-wide ${s[color]}`}>
       {children}
     </span>
+  )
+}
+
+function ArrowIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
   )
 }

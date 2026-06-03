@@ -9,7 +9,7 @@ import ensemencImg from '../assets/ensemenc_cover.png'
 export const allProjects = [
   {
     id: 'izired',
-    filter: ['dev', 'design'] ,
+    filter: ['work'] ,
     title: 'IZIRED',
     tags: [
       { label: 'Logiciel',     type: 'dev'    },
@@ -24,7 +24,7 @@ export const allProjects = [
   },
   {
     id: 'fifaac',
-    filter: ['design'],
+    filter: ['work'],
     title: 'FIFAAC 2025',
     tags: [
       { label: 'UX Design', type: 'design' },
@@ -38,7 +38,7 @@ export const allProjects = [
   },
   {
     id: 'compagnon',
-    filter: ['dev', 'design'] ,
+    filter: ['lab'] ,
     title: 'Compagnon Virtuel',
     tags: [
       { label: 'Programmation', type: 'dev'    },
@@ -52,7 +52,7 @@ export const allProjects = [
   },
     {
     id: 'octotune',
-    filter: ['design', 'dev'],
+    filter: ['work'],
     title: "Octo'Tune",
     tags: [
       { label: 'UX Design', type: 'design' },
@@ -67,7 +67,7 @@ export const allProjects = [
   },
   {
     id: 'sciencealasource',
-    filter: ['design'],
+    filter: ['work'],
     title: 'Science à la source',
     tags: [
       { label: 'UX Design', type: 'design' },
@@ -81,7 +81,7 @@ export const allProjects = [
   },
     {
     id: 'ensemenc',
-    filter: ['dev'],
+    filter: ['lab'],
     title: 'ENSemenC',
     tags: [
       { label: 'Programmation Orientée Objet', type: 'dev' },
