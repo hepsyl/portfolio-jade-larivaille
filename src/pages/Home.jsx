@@ -44,7 +44,7 @@ export default function Home() {
           style={{ backgroundImage: 'radial-gradient(circle, rgba(24,143,126,0.12) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
         <div className="absolute -right-20 bottom-0 w-[500px] h-[500px] rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(24,143,126,0.08), transparent 70%)' }} />
-
+        <div className="flex justify-between">
         <div className="relative z-10 max-w-3xl">
           <div className="hero-anim animate-fade-up-1 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-bright-green mb-7">
             <span className="w-7 h-px bg-bright-green" />
@@ -74,6 +74,12 @@ export default function Home() {
             >
               Me contacter
             </button>
+          </div>
+        </div>
+          <div id="mouse-scroll" className="flex w-full flex-col items-center">
+              <span class="down-arrow-1"></span>
+              <span class="down-arrow-2"></span>
+              <span class="down-arrow-3"></span>
           </div>
         </div>
       </section>
