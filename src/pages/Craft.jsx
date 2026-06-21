@@ -13,22 +13,21 @@ export default function Craft() {
 
   return (
     <div ref={pageRef} className="page-enter min-h-screen grid-pattern">
-      <section className="px-6 md:px-12 pt-32 pb-10">
+      <section className="px-6 md:px-12 pt-32">
         <div className="mb-14">
           <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-orange dark:text-bright-orange mb-3">
             <span className="w-6 h-px bg-bright-orange" />
             #02
           </div>
-          <h1 className="font-heading font-semibold text-[clamp(2.5rem,5vw,4rem)] tracking-tight leading-[1.05] text-almost-black dark:text-almost-white mb-4">
+          <h1 className="font-heading font-medium text-[clamp(2.5rem,5vw,4rem)] tracking-tight leading-[1.05] text-almost-black dark:text-almost-white mb-4">
             Craft
           </h1>
-          <p className="font-body text-base text-[#5a6a62] dark:text-white/40 max-w-lg leading-relaxed">
+          <p className="font-body text-base text-[#5a6a62] dark:text-white/75 max-w-lg leading-relaxed">
             Identités visuelles, logos, motion design et explorations graphiques.
           </p>
         </div>
       </section>
 
-      {/* Bento grid */}
       <section className="px-6 md:px-12 pb-16">
         <div className="hidden md:grid grid-cols-5 auto-rows-[220px] gap-4">
           {craftItems.map(item => (
@@ -56,7 +55,7 @@ function BentoCell({ item, onOpen }) {
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl bg-[#f0f2f0] dark:bg-white/5 ${item.colSpan || ''} cursor-pointer group`}
+      className={`relative overflow-hidden border border-forest-green/3 dark:border-bright-green/75 bg-[#f0f2f0] dark:bg-white/5 ${item.colSpan || ''} cursor-pointer group`}
       style={{ minHeight: '220px' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -70,7 +69,7 @@ function BentoCell({ item, onOpen }) {
         />
       )}
 
-      <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-300 ${hovered ? 'opacity-100' : 'opacity-0'}`} />
+      <div className={`absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent transition-opacity duration-300 ${hovered ? 'opacity-100' : 'opacity-0'}`} />
 
       {item.type === 'video' && (
         <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${hovered ? 'opacity-0' : 'opacity-100'}`}>
@@ -86,7 +85,7 @@ function BentoCell({ item, onOpen }) {
             <span key={t} className="text-[0.62rem] font-semibold px-2 py-0.5 rounded-full bg-white/15 text-white/90 backdrop-blur-sm">{t}</span>
           ))}
         </div>
-        <p className="font-heading font-semibold text-white text-[1rem] leading-snug mb-1">{item.label}</p>
+        <p className="font-heading font-medium text-white text-[1rem] leading-snug mb-1">{item.label}</p>
         <p className="font-body text-white/70 text-[0.73rem] leading-relaxed line-clamp-1">{item.desc}</p>
       </div>
     </div>

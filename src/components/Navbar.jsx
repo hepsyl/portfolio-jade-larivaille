@@ -7,8 +7,8 @@ import DarkModeToggler from '../context/DarkModeToggler'
 const links = [
   { label: 'Home',     to: '/'      },
   { label: 'Work',     to: '/work'  },
-  { label: 'Craft',    to: '/craft' },
   { label: 'Lab',      to: '/lab'   },
+  { label: 'Craft',    to: '/craft' },
   { label: 'About me', to: '/about' },
 ]
 

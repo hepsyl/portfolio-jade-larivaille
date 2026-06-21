@@ -5,6 +5,7 @@ import compagnonImg from '../assets/compagnon_cover.png'
 import salsImg      from '../assets/sals_cover.png'
 import octotuneImg from '../assets/octotune_cover.png'
 import ensemencImg from '../assets/ensemenc_cover.png'
+import couchImg from '../assets/couch_cover.png'
 
 export const allProjects = [
   {
@@ -90,6 +91,19 @@ export const allProjects = [
     desc: "Projet de fin de semestre : jeu de simulation de potager en programmation orientée objet.",
     tech: ['C#', 'POO'],
     image: ensemencImg,
+    cursorType: 'green',
+  },
+    {
+    id: 'couch',
+    filter: ['lab'],
+    title: 'Couch',
+    tags: [
+      { label: 'Configurateur 3D', type: 'dev' },
+      { label: 'Page Web', type: 'dev' },
+    ],
+    desc: "Projet d'apprentissage de React Three Fiber : configurateur de canapé avec modèle 3D'.",
+    tech: ['React Three Fiber', 'JavaScript', 'React', 'CSS', 'Figma'],
+    image: couchImg,
     cursorType: 'green',
   },
 ]

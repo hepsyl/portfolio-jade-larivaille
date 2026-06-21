@@ -14,9 +14,8 @@ import godotSrc from '../../public/assets/Godot_2D.mp4'
 import maisonLeo from '../assets/Maison_Leo_v2.png'
 import pixelArt from '../assets/pixel_art_assets.png'
 import lebowskiImg from '../assets/lebowski.png'
+import couchImg from '../assets/couch_cover.png'
 
-
-// ─── WORK projects ───────────────────────────────────────────────────────────
 export const workProjects = [
   {
     id: 'izired',
@@ -70,7 +69,6 @@ export const workProjects = [
   },
 ]
 
-// ─── LAB projects ─────────────────────────────────────────────────────────────
 export const labProjects = [
   {
     id: 'compagnon',
@@ -95,9 +93,20 @@ export const labProjects = [
     tech: ['C#', 'POO'],
     image: ensemencCover,
   },
+  {
+    id: 'couch',
+    filter: ['lab'],
+    title: 'Couch',
+    tags: [
+      { label: 'Configurateur 3D', type: 'dev' },
+      { label: 'Page Web', type: 'dev' },
+    ],
+    desc: "Projet d'apprentissage de React Three Fiber : configurateur de canapé avec modèle 3D'.",
+    tech: ['React Three Fiber', 'JavaScript', 'React', 'CSS', 'Figma'],
+    image: couchImg,
+  },
 ]
 
-// ─── CRAFT items ──────────────────────────────────────────────────────
 export const craftItems = [
   {
     id: 'elji',
@@ -184,7 +193,6 @@ export const craftItems = [
   },
 ]
 
-// ─── About data ───────────────────────────────────────────────────────────────
 export const experiences = [
   {
     company: 'EENOV',

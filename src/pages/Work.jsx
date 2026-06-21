@@ -18,10 +18,10 @@ export default function Work() {
             <span className="w-6 h-px bg-bright-orange" />
             #01
           </div>
-          <h1 className="font-heading font-semibold text-[clamp(2.5rem,5vw,4rem)] tracking-tight leading-[1.05] text-almost-black dark:text-almost-white mb-4">
+          <h1 className="font-heading font-medium text-[clamp(2.5rem,5vw,4rem)] tracking-tight leading-[1.05] text-almost-black dark:text-almost-white mb-4">
             Work
           </h1>
-          <p className="font-body text-base text-[#5a6a62] dark:text-white/40 max-w-lg leading-relaxed">
+          <p className="font-body text-base text-[#5a6a62] dark:text-white/75 max-w-lg leading-relaxed">
             Projets UX/UI, développement front-end et design de sites web.
           </p>
         </div>

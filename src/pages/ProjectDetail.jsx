@@ -4,6 +4,7 @@ import SectionDivider from '../components/SectionDivider'
 import Footer from '../components/Footer'
 import Carousel from '../components/Carousel'
 import { useReveal } from '../hooks/useReveal'
+import { useDarkMode } from '../context/ThemeContext'
 import iziredCover     from '../assets/izired_cover.png'
 import iziredTable2    from '../assets/izired_table2.png'
 import iziredTable     from '../assets/izired_table.png'
@@ -34,6 +35,8 @@ import ensemencClassique from '../assets/ensemenc_classique.png'
 import ensemencArbre from '../assets/ensemenc_arbre.png'
 import ensemencClasse from '../assets/ensemenc_diagramme.png'
 import ensemencWiki from '../assets/ensemenc_wiki.png'
+import couchFigma from '../assets/couch_figma.png'
+import couchPage from '../assets/couch_cover.png'
 
 
 function autoGrid(n) {
@@ -51,35 +54,34 @@ function SummaryBox({ summary, accent, accentBorder, accentSoft, accentBg }) {
   if (!summary) return null
 
   return (
-    <div className={`reveal rounded-2xl border-2 ${accentBorder} overflow-hidden`}>
+    <div className={`reveal border ${accentBorder} overflow-hidden bg-almost-white dark:bg-dark-green`}>
       <button
         onClick={() => setOpen(o => !o)}
         className={`w-full flex items-center justify-between gap-4 px-5 py-4 ${accentSoft} transition-colors`}
       >
         <div className="flex items-center gap-3">
-          <span className="text-base">⚡</span>
-          <span className={`font-heading font-semibold text-[0.85rem] tracking-wide ${accent}`}>
+          <span className={`font-heading font-medium text-[0.85rem] dark:text-almost-white tracking-wide`}>
             Pas le temps de tout lire ?
           </span>
         </div>
         <svg
-          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#001407" strokeWidth="2.5"
           strokeLinecap="round" strokeLinejoin="round"
-          className={`${accent} flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+          className={`${accent} dark:text-almost-white flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
         >
           <path d="M6 9l6 6 6-6"/>
         </svg>
       </button>
 
       {open && (
-        <div className="px-5 pb-5 pt-2 bg-almost-white space-y-3">
+        <div className="px-5 pb-5 pt-2 bg-almost-white dark:bg-[#0a1a10] space-y-3">
           {summary.tldr && (
-            <p className="font-body text-[0.85rem] leading-relaxed text-[#3a4a42] font-medium">{summary.tldr}</p>
+            <p className="font-body text-[0.85rem] leading-relaxed text-[#3a4a42] dark:text-white/70 font-medium">{summary.tldr}</p>
           )}
           {summary.points?.length > 0 && (
             <ul className="flex flex-col gap-2 mt-2">
               {summary.points.map((pt, i) => (
-                <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#4a5a52] leading-relaxed">
+                <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#4a5a52] dark:text-white/50 leading-relaxed">
                   <span className={`mt-[6px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${accentBg}`} />
                   {pt}
                 </li>
@@ -92,24 +94,24 @@ function SummaryBox({ summary, accent, accentBorder, accentSoft, accentBg }) {
   )
 }
 
-function NarrativeSection({ s, accent, accentBorder, accentBg, gradient }) {
+function NarrativeSection({ s, accent, accentBorder, accentBg }) {
   const paragraphs = Array.isArray(s.content) ? s.content : (s.content ? [s.content] : [])
   return (
     <div className="reveal">
       {s.heading && (
-        <h3 className="font-heading font-semibold text-[1.1rem] md:text-[1.25rem] text-almost-black mb-4 leading-snug">
+        <h3 className="font-heading font-medium text-[1.1rem] md:text-[1.25rem] text-almost-black dark:text-almost-white mb-4 leading-snug">
           {s.heading}
         </h3>
       )}
       <div className={s.image ? 'grid grid-cols-1 md:grid-cols-2 gap-8 items-start' : ''}>
         <div className="space-y-3">
           {paragraphs.map((p, i) => (
-            <p key={i} className="font-body text-[0.93rem] leading-relaxed text-[#3a4a42]">{p}</p>
+            <p key={i} className="font-body text-[0.93rem] leading-relaxed text-[#3a4a42] dark:text-white/60 whitespace-pre-line">{p}</p>
           ))}
           {s.list?.length > 0 && (
             <ul className={`mt-3 grid ${listGrid(s.list.length)} gap-x-8 gap-y-2`}>
               {s.list.map((item, i) => (
-                <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#4a5a52] leading-relaxed">
+                <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#4a5a52] dark:text-white/50 leading-relaxed">
                   <span className={`mt-[6px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${accentBg}`} />
                   {item}
                 </li>
@@ -118,7 +120,7 @@ function NarrativeSection({ s, accent, accentBorder, accentBg, gradient }) {
           )}
           {s.quote && (
             <blockquote className={`mt-4 border-l-2 ${accentBorder} pl-4`}>
-              <p className={`font-body text-sm italic leading-relaxed ${accent}`}>"{s.quote}"</p>
+              <p className={`font-body text-sm italic leading-relaxed ${accent} dark:opacity-90`}>"{s.quote}"</p>
             </blockquote>
           )}
         </div>
@@ -142,7 +144,6 @@ const projects = {
     client: 'EENOV - Stage 1ère année',
     team: '3 personnes : front-end (moi), 1 dev backend, 1 Chef de projet',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Twig', 'UX Design', 'UI Design'],
-    gradient: 'from-[#0d4d45] to-[#B54804]',
 
     summary: {
       tldr: "En 2 mois de stage, j'ai redesigné l'interface d'une plateforme SaaS immobilière et développé le front-end, puis conçu le site vitrine déployé sur izired.com.",
@@ -161,13 +162,13 @@ const projects = {
       },
       {
         heading: "Choix graphiques",
-        content: "Ayant eu pratiquement carte blanche pour le visuel de l ’application j’ai conservé le bleu et le blanc du logo, tout en cherchant une couleur vive pour les CTA qui contrastait suffisamment avec le bleu et le blanc. On a donc opté pour le rose fuschia pour son dynamisme et nous avons ajouté un bleu vibrant, voisin du rose sur la roue chromatique.  Un point important de l’application a été de travailler la visualisation de données des projets, afin que celle-ci soit la plus intuitive et rapide possible. La difficulté résidait dans le fait de trouver des graphiques compatibles avec les l ibrairies existantes sur le logiciel.",
+        content: "Ayant eu pratiquement carte blanche pour le visuel de l'application j'ai conservé le bleu et le blanc du logo, tout en cherchant une couleur vive pour les CTA qui contrastait suffisamment avec le bleu et le blanc. On a donc opté pour le rose fuschia pour son dynamisme et nous avons ajouté un bleu vibrant, voisin du rose sur la roue chromatique. Un point important de l'application a été de travailler la visualisation de données des projets, afin que celle-ci soit la plus intuitive et rapide possible. La difficulté résidait dans le fait de trouver des graphiques compatibles avec les librairies existantes sur le logiciel.",
       },
       {
         heading: "Le site vitrine",
         content: [
-          " Nous avons pu établir une direction pour le site : moderne, épuré, de grandes icones et beaucoup d’onglets interactifs et de redirections. De plus, pour garder une continuité avec les couleurs originels du logo, j’ai incorporé du violet via les dégradés du rose au bleu, ainsi que le turquoise, présent comme couleur d’accentuation.",
-          " Enfin, l’enjeu était de réduire la quantité de texte visible sur la page, nous avons donc fait le choix de passer par de nombreux onglets et menu déroulants, ainsi que de nombreuses icones et données chiffrées.",
+          "Nous avons pu établir une direction pour le site : moderne, épuré, de grandes icones et beaucoup d'onglets interactifs et de redirections. De plus, pour garder une continuité avec les couleurs originels du logo, j'ai incorporé du violet via les dégradés du rose au bleu, ainsi que le turquoise, présent comme couleur d'accentuation.",
+          "Enfin, l'enjeu était de réduire la quantité de texte visible sur la page, nous avons donc fait le choix de passer par de nombreux onglets et menu déroulants, ainsi que de nombreuses icones et données chiffrées.",
         ],
       },
     ],
@@ -251,7 +252,6 @@ const projects = {
     client: 'EENOV',
     team: 'Travail en collaboration avec une cheffe de projet digital',
     tags: ['Figma', 'UX Design', 'UI Design', 'Direction artistique'],
-    gradient: 'from-[#1a0a02] via-[#B54804] to-[#F05F05]',
     summary: {
       tldr: "Conception de la maquette du site web du FIFAAC 2025 - de la direction artistique aux écrans Figma haute-fidélité.",
       points: [
@@ -263,12 +263,13 @@ const projects = {
     sections: [
       {
         heading: "Contexte",
-        content: "Le FIFAAC est un festival de cinéma et d’arcitecture qui se tient chaque année à Bordeaux. Pour sa 10ème édition, ils souhaitaient redonner un coup de frais au site internet.",
+        content: "Le FIFAAC est un festival de cinéma et d'architecture qui se tient chaque année à Bordeaux. Pour sa 10ème édition, ils souhaitaient redonner un coup de frais au site internet.",
       },
       {
         heading: "Mon approche",
-        content: ["J’ai commencé par réaliser un moodboard en suivant les inspirations qui m’avaient été envoyé. Le but était d’avoir quelque chose d’assez minimaliste en gardant une touche de couleur. J’ai ainsi choisi 4 couleurs fortes mais douces afin de ne pas surcharger les visuels, ainsi qu’une police assez forte et originale, autour desquelles baser les accents du site. Le reste du site utilise donc le noir et le blanc, ainsi qu’une police simple afin de contrebalancer les couleurs et la police d’accent pour un rendu visuel assez épuré..",
-          "Pour la programmation des films, l’idée de carte est apparue assez rapidement, permettant de mettre en valeur les photos des projets et les visuels cinématographiques. Au passage de la souris, les informations principales sont révélées, avec un CTA qui permet d’en apprendre plus sur le film. Sur cette page détaillée, on retrouve un lecteur de vidéo, la billetterie, ainsi qu’un résumé des films."
+        content: [
+          "J'ai commencé par réaliser un moodboard en suivant les inspirations qui m'avaient été envoyé. Le but était d'avoir quelque chose d'assez minimaliste en gardant une touche de couleur. J'ai ainsi choisi 4 couleurs fortes mais douces afin de ne pas surcharger les visuels, ainsi qu'une police assez forte et originale, autour desquelles baser les accents du site. Le reste du site utilise donc le noir et le blanc, ainsi qu'une police simple afin de contrebalancer les couleurs et la police d'accent pour un rendu visuel assez épuré.",
+          "Pour la programmation des films, l'idée de carte est apparue assez rapidement, permettant de mettre en valeur les photos des projets et les visuels cinématographiques. Au passage de la souris, les informations principales sont révélées, avec un CTA qui permet d'en apprendre plus sur le film. Sur cette page détaillée, on retrouve un lecteur de vidéo, la billetterie, ainsi qu'un résumé des films.",
         ],
       },
     ],
@@ -286,8 +287,8 @@ const projects = {
       { image: fifaacProgramme, caption: 'Programme du festival'},
       { image: fifaacFilm, caption: 'Fiche film détaillée'},
       { image: fifaacMobile, caption: 'Version mobile - polices & couleurs'},
-      {image: fifaacCamera, caption: 'Adaptation ludique des éléments'},
-      {image: fifaacMoodboard, caption: 'Moodboard - Planche d\'inspirations'}
+      { image: fifaacCamera, caption: 'Adaptation ludique des éléments'},
+      { image: fifaacMoodboard, caption: "Moodboard - Planche d'inspirations"},
     ],
     techs: [{ label: 'Outil', value: 'Figma' }],
     techsNote: null,
@@ -296,7 +297,7 @@ const projects = {
     ],
     improvements: [],
     links: [{ label: 'Site web', url: 'https://fifaac.fr/', note: null }],
-    next: 'compagnon',
+    next: 'octotune',
   },
 
   compagnon: {
@@ -309,7 +310,6 @@ const projects = {
     client: 'Projet universitaire ENSC',
     team: "Groupe de 4 étudiantes de 1ère année, supervisé par Elise Grevet",
     tags: ['Modélisation 3D', 'Maya', 'CCU', 'Programmation', 'UX Research'],
-    gradient: 'from-[#0d4d45] to-[#B54804]',
     summary: {
       tldr: "Conception d'un compagnon virtuel 3D pour accompagner des patients en rééducation post-AVC dans un jeu du Simon adapté.",
       points: [
@@ -321,33 +321,41 @@ const projects = {
     sections: [
       {
         heading: "Contexte",
-        content: ["Il a été démontré que la présence d'un compagnon virtuel pour la rééducation lors de l'utilisation d'interfaces Cerveau-Machine (ICM) est capable d’améliorer les ressentis et les performances des utilisateurs qui ont besoin de présence sociale et de soutien émotionnel.",
-                  "Ainsi, Elise Grevet, doctorante effectuant actuellement sa thèse à l'INCIA sur l'acceptabilité des ICM dans le cadre de rééducation motrice et cognitive, nous a demandé de créer un compagnon virtuel, et notamment d'étudier quelle présence dans l'accompagnement est la plus appréciée par les patients."],
+        content: [
+          "Il a été démontré que la présence d'un compagnon virtuel pour la rééducation lors de l'utilisation d'interfaces Cerveau-Machine (ICM) est capable d'améliorer les ressentis et les performances des utilisateurs qui ont besoin de présence sociale et de soutien émotionnel.",
+          "Ainsi, Elise Grevet, doctorante effectuant actuellement sa thèse à l'INCIA sur l'acceptabilité des ICM dans le cadre de rééducation motrice et cognitive, nous a demandé de créer un compagnon virtuel, et notamment d'étudier quelle présence dans l'accompagnement est la plus appréciée par les patients.",
+        ],
       },
       {
         heading: "Le projet",
-        content: ["Le compagnon virtuel est un projet de création et de test d'un compagnon virtuel en 3D afin d'aider les patients en rééducation motrice et/ou post-AVC. Il s'agit d'un projet de groupe à 4 qui s'est étendu d'octobre 2024 à mai 2025.",
-                  "Nous avons donc analysé l'état de l'art réalisé par un groupe précédent il y a 2 ans et modélisé en 3D le compagnon à l'aide du logiciel Maya dans 3 positions : debout, assis, couché. Ensuite, nous avons codé rapidement un jeu du Simon sur Unity et Visual Studio en C# pour pouvoir y intégrer notre compagnon par la suite. Le but ici est surtout de tester différents niveaux d'implication du compagnon afin de déterminer ce qui est le plus pertinent pour aider les patients en tant que soutien moral."],
+        content: [
+          "Le compagnon virtuel est un projet de création et de test d'un compagnon virtuel en 3D afin d'aider les patients en rééducation motrice et/ou post-AVC. Il s'agit d'un projet de groupe à 4 qui s'est étendu d'octobre 2024 à mai 2025.",
+          "Nous avons donc analysé l'état de l'art réalisé par un groupe précédent il y a 2 ans et modélisé en 3D le compagnon à l'aide du logiciel Maya dans 3 positions : debout, assis, couché. Ensuite, nous avons codé rapidement un jeu du Simon sur Unity et Visual Studio en C# pour pouvoir y intégrer notre compagnon par la suite. Le but ici est surtout de tester différents niveaux d'implication du compagnon afin de déterminer ce qui est le plus pertinent pour aider les patients en tant que soutien moral.",
+        ],
       },
       {
         heading: "Les niveaux d'accompagnement",
-        content: ["Nous avons par la suite codé un jeu du Simon, en C#, de manière à tester notre compagnon selon différents modes de jeu : ",
-                  "Dans le mode 1, le compagnon n’est présent qu’au début et à la fin de la partie, afin de donner les consignes au joueur et de le féliciter ou l’encourager selon le résultat en fin de partie.", 
-                  "Dans le mode 2, le compagnon agit comme dans le mode précédent, tout en étant présent entre chaque manche pour encourager et/ou féliciter le joueur.",
-                  "Dans le mode 3, le compagnon agit comme dans le mode 2, mais il peut donner un indice au joueur si celui-ci est bloqué, où qu’il s’est déjà trompé deux fois, le nombre d’essais maximal étant de trois."],
+        content: [
+          "Nous avons par la suite codé un jeu du Simon, en C#, de manière à tester notre compagnon selon différents modes de jeu :",
+          "Dans le mode 1, le compagnon n'est présent qu'au début et à la fin de la partie, afin de donner les consignes au joueur et de le féliciter ou l'encourager selon le résultat en fin de partie.",
+          "Dans le mode 2, le compagnon agit comme dans le mode précédent, tout en étant présent entre chaque manche pour encourager et/ou féliciter le joueur.",
+          "Dans le mode 3, le compagnon agit comme dans le mode 2, mais il peut donner un indice au joueur si celui-ci est bloqué, où qu'il s'est déjà trompé deux fois, le nombre d'essais maximal étant de trois.",
+        ],
       },
       {
         heading: "Tests utilisateurs et fin du projet",
-        content: ["Enfin, nous avons donc demandé à différents élèves de l’ENSC de passer une expérimentation, dans laquelle ils devaient jouer aux trois modes de jeu dans un ordre aléatoire. Nous leur avons demandé de remplir un questionnaire sur leurs impressions et ressentis après chaque mode de jeu, ainsi qu’un questionnaire final pour établir le mode d’accompagnement qui leur convenait le mieux.",
-                  "Ce projet s’est soldé par la rédaction d’un rapport, la création d’un site web qui retrace l’avancée du projet (que vous pourrez retrouver en cliquant sur le bouton en haut à droite de cette page) et par une soutenance afin de présenter l’ensemble de nos travaux."],
-        quote: "100% des participants ont préféré une des parties où le compagnon était présent"
+        content: [
+          "Enfin, nous avons donc demandé à différents élèves de l'ENSC de passer une expérimentation, dans laquelle ils devaient jouer aux trois modes de jeu dans un ordre aléatoire. Nous leur avons demandé de remplir un questionnaire sur leurs impressions et ressentis après chaque mode de jeu, ainsi qu'un questionnaire final pour établir le mode d'accompagnement qui leur convenait le mieux.",
+          "Ce projet s'est soldé par la rédaction d'un rapport, la création d'un site web qui retrace l'avancée du projet (que vous pourrez retrouver en cliquant sur le bouton en haut à droite de cette page) et par une soutenance afin de présenter l'ensemble de nos travaux.",
+        ],
+        quote: "100% des participants ont préféré une des parties où le compagnon était présent",
       },
       {
         heading: "Mes réalisations",
         content: "Sur ce projet j'ai donc principalement effectué la partie modélisation 3D dont je me suis occupée seule, ainsi que la réalisation du site web accompagnant le projet. J'ai également participé aux tests utilisateurs et à la rédaction des différents livrables.",
       },
     ],
-    objectives: ['S\'approprier les travaux réalisés précédemment', 'Modéliser le compagnon virtuel', 'Développer un mini-jeu intégrant le compagnon', 'Tester le jeu et rédiger un guide d\'utilisation'],
+    objectives: ["S'approprier les travaux réalisés précédemment", 'Modéliser le compagnon virtuel', 'Développer un mini-jeu intégrant le compagnon', "Tester le jeu et rédiger un guide d'utilisation"],
     constraints: [],
     process: [
       { phase: '01', title: "Analyse de l'état de l'art", period: '', color: 'neutral', tasks: ["Appropriation des résultats du groupe précédent", "Définition de la forme et de l'attitude du compagnon"] },
@@ -383,11 +391,11 @@ const projects = {
     links: [
       { label: 'Site web du projet', url: 'https://jadelarivaille.wixsite.com/compagnon-virtuel/', note: 'Découvrez en plus !' },
     ],
-    next: 'octotune',
+    next: 'ensemenc',
   },
 
-      octotune: {
-    title: 'Octo\'Tune',
+  octotune: {
+    title: "Octo'Tune",
     subtitle: "Application mobile de gestion du club musique de l'ENSC",
     type: 'dev',
     year: '2024',
@@ -396,7 +404,6 @@ const projects = {
     client: 'Projet Scolaire',
     team: 'Travail en équipe de 8 : 4 élèves de 2ème année & 4 élèves de 1ère année',
     tags: ['Figma', 'Développement web', 'UX Research', 'UI Design'],
-    gradient: 'from-[#0d4d45] to-[#B54804]',
     summary: {
       tldr: "Utilisation de méthodes de conception centrée utilisateur afin de concevoir puis développer en Javascript avec React une application mobile.",
       points: ["Etat de l'art : Benchmark existant, pose du contexte, méthodes de CCU existantes", "UX Research : réalisation de questionnaires et focus group", "UX/UI Design : prototypage de l'application sur Figma", "Développement mobile de l'application (planning, accueil, évènements, messagerie, notifications)"],
@@ -408,12 +415,12 @@ const projects = {
       },
       {
         heading: "Mes contributions",
-        content: "Sur ce projet j'ai comméncé par recenscer les méthodes de conception centrée utilisateur que nous pourrions utiliser, puis participé à la rédaction d'un des deux questionnaires et à la prise de notes lors du focus group. Après analyse des données, nous sommes passés au prototypage, sur lequel j'ai réalisé les pages évènements et profil ainsi que toute la messagerie et les pages qui y sont associées. Côté développement, j'ai fait le front-end de la page d'accueil, du bloc de notifications, de la messagerie générale, de la page d'évènements, et de la liste des membres.",
+        content: "Sur ce projet j'ai commencé par recenser les méthodes de conception centrée utilisateur que nous pourrions utiliser, puis participé à la rédaction d'un des deux questionnaires et à la prise de notes lors du focus group. Après analyse des données, nous sommes passés au prototypage, sur lequel j'ai réalisé les pages évènements et profil ainsi que toute la messagerie et les pages qui y sont associées. Côté développement, j'ai fait le front-end de la page d'accueil, du bloc de notifications, de la messagerie générale, de la page d'évènements, et de la liste des membres.",
       },
       {
         heading: "Recherche utilisateur",
         content: "Pour comprendre au mieux le besoin des étudiants, nous avons sélectionné deux méthodes de conception centrée utilisateur : le questionnaire pour toucher le plus de personnes possibles, et le focus group pour avoir des retour qualitatifs.",
-        list:["Questionnaire : Confirmation de l'utilité des fonctionnalités prévues (planning, calendrier, réservations de la salle...)", "Focus group : Identifications des raisons des problèmes d'organisation, émergence de nouvelles fonctionnalités (proposition de musiques, recherche de musiciens)"],
+        list: ["Questionnaire : Confirmation de l'utilité des fonctionnalités prévues (planning, calendrier, réservations de la salle...)", "Focus group : Identifications des raisons des problèmes d'organisation, émergence de nouvelles fonctionnalités (proposition de musiques, recherche de musiciens)"],
       },
       {
         heading: "Evaluation de l'utilisabilité",
@@ -427,7 +434,7 @@ const projects = {
     objectives: ["Mettre en oeuvre des méthodes de conception centrée utilisateur", "Réaliser un prototype fonctionnel de l'application", "Développer l'application"],
     constraints: ["Première mise en application des méthodes CCU", "Découverte de Javascript, React et des API"],
     process: [
-      { phase: '01', title: 'Etat de l\'art', period: 'Semaines 1 à 3', color: 'neutral', tasks: ["Méthodes CCU et applications", "Organisation du club musique", "Benchmark applications similaires", "Agréabilité des interfaces utilisateur"] },
+      { phase: '01', title: "Etat de l'art", period: 'Semaines 1 à 3', color: 'neutral', tasks: ["Méthodes CCU et applications", "Organisation du club musique", "Benchmark applications similaires", "Agréabilité des interfaces utilisateur"] },
       { phase: '02', title: 'UX Research', period: 'Semaines 3 à 5', color: 'orange', tasks: ["Deux questionnaires (pour les membres et non-membres) : 44 répondants", "Focus Group : 2 intervenants, 9 membres du club musique"] },
       { phase: '03', title: 'Prototypage et tests utilisateurs', period: 'Semaines 6 à 12', color: 'orange', tasks: ["Protypage v1, définition de l'univers graphique", "Passation de 5 tests utilisateur", "Version 2 du prototype : amélioration de l'intuitivité et de l'agréabilité"] },
       { phase: '04', title: 'Développement', period: 'Semaines 6 à 16', color: 'green', tasks: ["Création de l'API et adaptation à nos besoins", "Développement du front end en JavaScript et CSS, sous React et NodeJS"] },
@@ -445,7 +452,7 @@ const projects = {
     ],
     techs: [
       { label: 'Langages & Frameworks', value: 'React · NodeJS · JavaScript · CSS · PHP'},
-      { label: 'Outils', value: 'Figma · VSCode'}
+      { label: 'Outils', value: 'Figma · VSCode'},
     ],
     techsNote: null,
     learnings: [],
@@ -464,7 +471,6 @@ const projects = {
     client: 'EENOV',
     team: 'Travail en collaboration avec une cheffe de projet digital',
     tags: ['Figma', 'UX Design', 'UI Design'],
-    gradient: 'from-[#1a0a02] via-[#B54804] to-[#F05F05]',
     summary: {
       tldr: "Conception de maquettes haute-fidélité pour un blog de l'Université de Bordeaux recensant ses publications scientifiques.",
       points: ["5 écrans desktop respectant la charte graphique de l'Université de Bordeaux", "Focus sur le système de filtrage des contenus", "Benchmark de sites concurrents"],
@@ -481,7 +487,7 @@ const projects = {
       },
       {
         heading: "Focus : le système de filtrage",
-        content: "Nous avons notamment fait un focus particulier sur le système de filtrage, essentiel à l’expérience utilisateur pour un site regroupant autant de contenus. Nous avons itéré plusieurs systèmes, et cela malgré un laps de temps court pour maquetter les 5 écrans demandés. Nous avons fini par choisir un système multi-catégoriel, avec un filtrage par format, thématique et/ou par mot clef.",
+        content: "Nous avons notamment fait un focus particulier sur le système de filtrage, essentiel à l'expérience utilisateur pour un site regroupant autant de contenus. Nous avons itéré plusieurs systèmes, et cela malgré un laps de temps court pour maquetter les 5 écrans demandés. Nous avons fini par choisir un système multi-catégoriel, avec un filtrage par format, thématique et/ou par mot clef.",
       },
     ],
     objectives: ["Designer 5 écrans desktop", "Respecter la charte graphique de l'Université de Bordeaux"],
@@ -496,17 +502,17 @@ const projects = {
       { image: salsHero, caption: "Page d'accueil - Hero" },
       { image: salsContenu, caption: "Page de contenu type vidéo"},
       { image: salsWF, caption: "Wireframe - Page d'accueil"},
-      {image: salsPublications, caption: "Page d'accueil - section publications"},
+      { image: salsPublications, caption: "Page d'accueil - section publications"},
     ],
     techs: [{ label: 'Outil utilisé', value: 'Figma' }],
     techsNote: null,
     learnings: [],
     improvements: [],
     links: [{ label: 'Site web', url: 'https://sciencealasource.u-bordeaux.fr/', note: null }],
-    next: 'ensemenc',
+    next: 'izired',
   },
 
-    ensemenc: {
+  ensemenc: {
     title: 'ENSemenC',
     subtitle: "Jeu de simulation de potager à double temporalité",
     type: 'dev',
@@ -515,8 +521,7 @@ const projects = {
     role: 'Développeuse',
     client: 'Projet scolaire',
     team: 'Travail en binôme',
-    tags: ['C#', 'Programmation orientée objet',],
-    gradient: 'from-[#0d4d45] to-[#188F7E]',
+    tags: ['C#', 'Programmation orientée objet'],
     summary: {
       tldr: "Programmation d'un jeu de simulation de potager avec diverses espèces de plantes ayant des besoins spécifiques, un mode au tour par tour et un mode urgence en temps réel.",
       points: ["Programmation orientée objet, héritages", "Plus de 60 classes, 9 types de plantes", "Gestion des besoins en eau, lumière, température et sol, animaux, maladies, intempéries"],
@@ -524,8 +529,10 @@ const projects = {
     sections: [
       {
         heading: "Contexte et présentation du Jeu",
-        content: ["NSemenC était un projet de création d’un jeu en C# pour mettre en application les enseignements en Programmation Orientée Objet (POO) dispensés au cours du semestre. Nous étions en binôme pour ce projet. Le jeu était imposé, il s’agissait de créer une simulation de potager, au tour par tour, avec diverses plantes ayant des besoins spécifiques. Le joueur doit planter, entretenir et protéger ses cultures en fonction de leurs besoins (eau, lumière, température, terrain), tout en faisant face à des événements aléatoires comme des animaux nuisibles ou des intempéries.",
-        "Le jeu propose deux modes : \n \t Mode Classique : plantation, achat d’objets, entretien du potager, consultation d’un wiki interne, passage du temps… \n \t Mode Urgence : réactions rapides en temps limité face aux menaces (grêle, sécheresse, rongeurs, etc.), avec un déroulement et des actions spécifiques."],
+        content: [
+          "ENSemenC était un projet de création d'un jeu en C# pour mettre en application les enseignements en Programmation Orientée Objet (POO) dispensés au cours du semestre. Nous étions en binôme pour ce projet. Le jeu était imposé, il s'agissait de créer une simulation de potager, au tour par tour, avec diverses plantes ayant des besoins spécifiques. Le joueur doit planter, entretenir et protéger ses cultures en fonction de leurs besoins (eau, lumière, température, terrain), tout en faisant face à des événements aléatoires comme des animaux nuisibles ou des intempéries.",
+          "Le jeu propose deux modes :\nMode Classique : plantation, achat d'objets, entretien du potager, consultation d'un wiki interne, passage du temps…\nMode Urgence : réactions rapides en temps limité face aux menaces (grêle, sécheresse, rongeurs, etc.), avec un déroulement et des actions spécifiques.",
+        ],
       },
     ],
     objectives: ["Designer 5 écrans desktop", "Respecter la charte graphique de l'Université de Bordeaux"],
@@ -547,13 +554,71 @@ const projects = {
     techsNote: null,
     learnings: [
       { title: "Hiérarchisation des classes", body: "Polymorphisme, héritage et encapsulation" },
-      { title: "Gestion d’états et de comportements dynamiques", body: "Mise à jour des plantes, intempéries et conditions météorologiques à chaque tour" },
-      { title: "Séparation nette des responsabilités", body: "une classe dédiée à l’affichage, une classe dédiée à la simulation etc..." },
+      { title: "Gestion d'états et de comportements dynamiques", body: "Mise à jour des plantes, intempéries et conditions météorologiques à chaque tour" },
+      { title: "Séparation nette des responsabilités", body: "une classe dédiée à l'affichage, une classe dédiée à la simulation etc..." },
       { title: "Conception UML complète", body: "Réalisation de diagrammes de classes et de relations" },
     ],
     improvements: [],
     links: [{ label: 'Repository GitHub', url: 'https://github.com/PROGAV-PRJ25/projet-ensemenc-robert-larivaille', note: 'Un rapport complet est disponible sur le repository' }],
-    next: 'izired',
+    next: 'couch',
+  },
+
+  couch: {
+    title: 'Couch',
+    subtitle: "Page de personnalisation d'un canapé avec visualisation 3D",
+    type: 'dev',
+    year: '2026',
+    duration: '2 semaines',
+    role: 'Développeuse',
+    client: 'Projet personnel',
+    team: 'Travail seule',
+    tags: ['React Three Fiber', 'Javascript', 'Figma'],
+    summary: {
+      tldr: "Projet d'apprentissage des bases de l'intégration de rendus 3D sur une page web avec React Three Fiber.",
+      points: ["Gestion des modèles 3D, mesh et textures", "Gestion des lights and controles de la scène", "Réalisation d'une page web à partir d'une maquette basse résolution"],
+    },
+    sections: [
+      {
+        heading: "Contexte du projet",
+        content: [
+          "Depuis un moment je souhaitais apprendre à utiliser et intégrer la 3D dans mes sites web. N'ayant pas de cours à ce sujet, j'ai donc cherché un premier projet facile à réaliser afin de comprendre les fondamentaux de WebGL et Three.js. Etant amatrice de design et décoration d'intérieur, je me suis décidée sur un configurateur 3D de canapé avec différentes textures et couleurs.",
+        ],
+      },
+      {
+        heading: "Démarche",
+        content: [
+          "La première étape pour moi a été de réaliser une maquette basse fidélité afin de visualiser la disposition des éléments et de mieux définir ce que j'aurais à apprendre. J'ai ensuite cherché un modèle 3D que je pourrais utiliser comme base, n'ayant pas (pour le moment ;) ) de réelles compétences en modélisation 3D. J'ai donc choisi un modèle réalise par l'équipe TheAppXR sur SketchFab.",
+          "J'ai alors commencé à utiliser Blender pour changer les couleurs et les textures de celui-ci, afin d'obtenir plusieurs options de canapé. Néanmoins, en les important plus tard dans ma scène R3F, j'ai eu beaucoup de mal à gérer l'importations des couleurs. La solution a donc été de changer de méthode de manière à utiliser une modification directe du mesh de l'objet via le code de la page web, au lieu de jongler entre différents objets 3D importés, ce qui m'a grandement simplifié la tâche !",
+        ],
+      },
+    ],
+    objectives: ["Intégrer un modèle 3D à la page web", "Pouvoir modifier la couleur et les textures du canapé depuis l'interface graphique"],
+    constraints: ["Découverte de Three.js", "Peu de compétences en 3D"],
+    process: [
+      { phase: '01', title: 'Maquette basse fidélité', period: 'Jour 1', color: 'orange', tasks: ["Définir les paramètres de modification du canapé", "Prototypage Figma"] },
+      { phase: '02', title: 'Création du MVP', period: 'Jour 2', color: 'green', tasks: ["Création du projet Git", "Implémentation de la page web", "Création de la scène 3D"] },
+      { phase: '03', title: 'Gestion de la 3D et de la logique', period: 'Jour 3-5', color: 'green', tasks: ["Intégration du modèle 3D", "Gestion des lights et de l'environnement", "Création de la logique de changement d'états"] },
+      { phase: '04', title: 'Ajout du CSS et finalisation', period: 'Jour 6', color: 'green', tasks: ["Implémentation des couleurs et polices", "Affinement du layout de la page"] },
+    ],
+    livrablesSite: ["Page Web fonctionnelle sur laquelle il est possible de personnaliser le canapé en temps réel"],
+    gallery: [
+      { image: couchFigma, caption: "Maquette basse fidélité" },
+      { image: couchPage, caption: "Interface finale" },
+    ],
+    techs: [
+      { label: 'Langages & Frameworks', value: 'React · JavaScript · Three.js · React Three Fiber · Tailwind CSS'},
+      { label: 'Outils', value: 'Figma · Blender · SketchFab'},
+    ],
+    techsNote: null,
+    learnings: [
+      { title: "Gestion de la 3D dans une page web", body: "scène, objets, controles, lights, environnement..." },
+      { title: "Gestion d'états", body: "Mise à jour des textures et couleurs selon les sélections" },
+    ],
+    improvements: [],
+    links: [{ label: 'Essayer le configurateur', url: 'https://hepsyl.github.io/couch-personalisation/', note: null },
+      { label: 'Repository GitHub', url: 'https://github.com/hepsyl/couch-personalisation', note: null }
+    ],
+    next: 'compagnon',
   },
 }
 
@@ -561,15 +626,16 @@ export default function ProjectDetail() {
   const { id }   = useParams()
   const navigate = useNavigate()
   const pageRef  = useRef(null)
+  const { darkMode } = useDarkMode()
   useReveal(pageRef)
 
   const project = projects[id]
 
   if (!project) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-6 text-center px-6 pt-24">
-        <h1 className="font-heading font-semibold text-4xl text-almost-black">Projet introuvable</h1>
-        <p className="font-body text-[#4a5a52]">Ce projet n'existe pas ou son identifiant a changé.</p>
+      <div className="min-h-screen flex flex-col items-center justify-center gap-6 text-center px-6 pt-24 bg-almost-white dark:bg-forest-green">
+        <h1 className="font-heading font-semibold text-4xl text-almost-black dark:text-almost-white">Projet introuvable</h1>
+        <p className="font-body text-[#4a5a52] dark:text-white/50">Ce projet n'existe pas ou son identifiant a changé.</p>
         <Link to="/" className="inline-flex items-center gap-2 bg-bright-green text-white font-body text-sm font-semibold px-6 py-3 rounded-full hover:bg-dark-green transition-colors">
           ← Retour à l'accueil
         </Link>
@@ -578,9 +644,9 @@ export default function ProjectDetail() {
   }
 
   const isDesign     = project.type === 'design'
-  const accent       = isDesign ? 'text-dark-orange'      : 'text-dark-green'
+  const accent       = isDesign ? 'text-dark-orange dark:text-bright-orange' : 'text-dark-green dark:text-bright-green'
   const accentBg     = isDesign ? 'bg-bright-orange'        : 'bg-bright-green'
-  const accentSoft   = isDesign ? 'bg-bright-orange/10'     : 'bg-bright-green/10'
+  const accentSoft   = isDesign ? 'bg-bright-orange/10 dark:bg-bright-orange/15' : 'bg-bright-green/10 dark:bg-bright-green/15'
   const accentBorder = isDesign ? 'border-bright-orange/30' : 'border-bright-green/30'
 
   const hasSummary      = !!project.summary
@@ -599,7 +665,7 @@ export default function ProjectDetail() {
   const SL = ({ children, color = 'neutral' }) => {
     const cls = color === 'accent'
       ? `${accent} [&>span]:${accentBg}`
-      : 'text-[#4a5a52] [&>span]:bg-[#4a5a52]'
+      : 'text-[#4a5a52] dark:text-white/40 [&>span]:bg-[#4a5a52] dark:[&>span]:bg-white/40'
     return (
       <div className={`inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase mb-8 ${cls}`}>
         <span className="w-6 h-px" />{children}
@@ -608,11 +674,10 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div ref={pageRef}>
-      <section className={`relative min-h-[65vh] flex flex-col justify-end px-6 md:px-12 pt-32 pb-12 overflow-hidden bg-gradient-to-br ${project.gradient}`}>
-        <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 24px)' }} />
+    <div ref={pageRef} className="page-enter grid-pattern bg-almost-white dark:bg-forest-green">
+      <section className={`relative min-h-[65vh] flex flex-col justify-end px-6 md:px-12 pt-32 pb-12 overflow-hidden bg-almost-white dark:bg-almost-black border-b-2 border-bright-green`}>
 
-        <button onClick={() => navigate(-1)} className="absolute top-24 left-6 md:left-12 flex items-center gap-2 text-white hover:underline font-body text-sm font-medium transition-colors" aria-label="Retour à la liste des projets">
+        <button onClick={() => navigate(-1)} className="absolute top-24 left-6 md:left-12 flex items-center gap-2 text-forest-green dark:text-almost-white hover:underline font-body text-sm font-medium transition-colors" aria-label="Retour à la liste des projets">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           Retour
         </button>
@@ -620,11 +685,11 @@ export default function ProjectDetail() {
         <div className="relative z-10 max-w-3xl">
           <div className="flex flex-wrap gap-2 mb-5">
             {project.tags.map(t => (
-              <span key={t} className="text-[0.67rem] font-semibold tracking-[0.08em] uppercase px-2.5 py-1 rounded-full bg-white/15 text-white/90 backdrop-blur-sm">{t}</span>
+              <span key={t} className="text-[0.67rem] font-semibold tracking-[0.08em] uppercase px-2.5 py-1 rounded-full bg-white/15 text-almost-black/90 dark:text-almost-white/90 backdrop-blur-sm">{t}</span>
             ))}
           </div>
-          <h1 className="font-heading font-semibold text-[clamp(2.4rem,6vw,5rem)] leading-[1.05] tracking-tight text-white mb-3">{project.title}</h1>
-          <p className="font-body text-base text-white/80 max-w-xl leading-relaxed">{project.subtitle}</p>
+          <h1 className="font-heading font-semibold text-[clamp(2.4rem,6vw,5rem)] leading-[1.05] tracking-tight text-dark-orange dark:text-almost-white mb-3">{project.title}</h1>
+          <p className="font-body font-medium text-base text-dark-green dark:text-almost-white/75 max-w-xl leading-relaxed">{project.subtitle}</p>
         </div>
 
         <div className="relative z-10 mt-10 pt-8 border-t border-white/10 flex flex-wrap gap-x-8 gap-y-4">
@@ -636,14 +701,12 @@ export default function ProjectDetail() {
             ...(project.team ? [{ label: 'Équipe', value: project.team }] : []),
           ].map(m => (
             <div key={m.label} className="min-w-0">
-              <p className="font-body text-[0.65rem] font-semibold tracking-[0.15em] uppercase text-white/50 mb-0.5">{m.label}</p>
-              <p className="font-body text-sm font-medium text-white/90">{m.value}</p>
+              <p className="font-body text-[0.65rem] font-semibold tracking-[0.15em] uppercase text-almost-black/75 dark:text-white/75 mb-0.5">{m.label}</p>
+              <p className="font-body text-sm font-medium text-almost-black/90 dark:text-almost-white/90">{m.value}</p>
             </div>
           ))}
         </div>
       </section>
-
-      <SectionDivider variant={isDesign ? 'og' : 'go'} />
 
       <section className="px-6 md:px-12 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10 lg:gap-14 items-start">
@@ -666,7 +729,7 @@ export default function ProjectDetail() {
                     className={`inline-flex items-center gap-2 text-sm font-semibold font-body px-5 py-2.5 rounded-full border transition-all hover:-translate-y-0.5 ${isDesign ? 'border-bright-orange/40 text-bright-orange hover:bg-bright-orange/10' : 'border-bright-green/40 text-bright-green hover:bg-bright-green/10'}`}
                   >
                     {l.label}
-                    {l.note && <span className="font-normal text-xs text-almost-black opacity-60">{l.note}</span>}
+                    {l.note && <span className="font-normal text-xs text-almost-black dark:text-white/60 opacity-60">{l.note}</span>}
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
                     </svg>
@@ -676,8 +739,8 @@ export default function ProjectDetail() {
             )}
 
             {hasSections && project.sections.map((s, i) => (
-              <div key={i} className={i > 0 ? 'pt-8 border-t border-black/6' : ''}>
-                <NarrativeSection s={s} accent={accent} accentBorder={accentBorder} accentBg={accentBg} gradient={project.gradient} />
+              <div key={i} className={i > 0 ? 'pt-8 border-t border-black/6 dark:border-white/8' : ''}>
+                <NarrativeSection s={s} accent={accent} accentBorder={accentBorder} accentBg={accentBg} />
               </div>
             ))}
 
@@ -687,7 +750,7 @@ export default function ProjectDetail() {
                 {typeof project.objectives[0] === 'string' ? (
                   <ul className={`grid ${listGrid(project.objectives.length)} gap-x-8 gap-y-2`}>
                     {project.objectives.map((o, i) => (
-                      <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#4a5a52] leading-relaxed">
+                      <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#4a5a52] dark:text-white/50 leading-relaxed">
                         <span className={`mt-[6px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${accentBg}`} />{o}
                       </li>
                     ))}
@@ -695,9 +758,9 @@ export default function ProjectDetail() {
                 ) : (
                   <div className={`grid ${autoGrid(project.objectives.length)} gap-4`}>
                     {project.objectives.map((o, i) => (
-                      <div key={i} className={`rounded-2xl p-5 border ${accentBorder} ${accentSoft}`}>
+                      <div key={i} className={`p-5 border ${accentBorder} ${accentSoft}`}>
                         <span className={`text-[0.67rem] font-semibold tracking-[0.12em] uppercase mb-2 block ${accent}`}>{o.label}</span>
-                        <p className="font-body text-sm leading-relaxed text-[#3a4a42]">{o.text}</p>
+                        <p className="font-body text-sm leading-relaxed text-[#3a4a42] dark:text-white/60">{o.text}</p>
                       </div>
                     ))}
                   </div>
@@ -710,7 +773,7 @@ export default function ProjectDetail() {
                 <SL>Contraintes</SL>
                 <ul className={`grid ${listGrid(project.constraints.length)} gap-x-8 gap-y-2`}>
                   {project.constraints.map((c, i) => (
-                    <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#4a5a52] leading-relaxed">
+                    <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#4a5a52] dark:text-white/50 leading-relaxed">
                       <span className={`mt-[6px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${accentBg}`} />{c}
                     </li>
                   ))}
@@ -724,15 +787,15 @@ export default function ProjectDetail() {
 
             {project.techs?.length > 0 && (
               <div className="reveal flex flex-col gap-3">
-                <SL color="accent" className="mb-0">Technologies</SL>
+                <SL color="accent">Technologies</SL>
                 {project.techs.map(r => (
                   <div key={r.label} className={`flex flex-col gap-0.5 p-4 rounded-xl border ${accentBorder} ${accentSoft}`}>
-                    <span className="font-body text-xs font-medium text-[#4a5a52]">{r.label}</span>
+                    <span className="font-body text-xs font-medium text-[#4a5a52] dark:text-white/50">{r.label}</span>
                     <span className={`font-heading font-medium text-l ${accent}`}>{r.value}</span>
                   </div>
                 ))}
                 {project.techsNote && (
-                  <p className="font-body text-xs leading-relaxed text-[#6a7a72] mt-1">{project.techsNote}</p>
+                  <p className="font-body text-xs leading-relaxed text-[#6a7a72] dark:text-white/40 mt-1">{project.techsNote}</p>
                 )}
               </div>
             )}
@@ -743,27 +806,27 @@ export default function ProjectDetail() {
       {hasProcess && (
         <>
           <SectionDivider variant={isDesign ? 'go' : 'og'} />
-          <section className="px-6 md:px-12 py-20 md:py-24 bg-[#f2f4f2]">
+          <section className="px-6 md:px-12 py-20 md:py-24">
             <div className="reveal"><SL>Processus</SL></div>
             <div className="flex flex-col gap-5">
               {project.process.map((p, i) => {
                 const po = p.color === 'orange'
                 const pA = po ? 'text-bright-orange' : 'text-bright-green'
-                const pB = po ? 'bg-bright-orange/10' : 'bg-bright-green/10'
+                const pB = po ? 'bg-bright-orange/10 dark:bg-bright-orange/15' : 'bg-bright-green/10 dark:bg-bright-green/15'
                 const pBo = po ? 'border-bright-orange/25' : 'border-bright-green/25'
                 const pD = po ? 'bg-bright-orange' : 'bg-bright-green'
                 return (
-                  <div key={i} className={`reveal rounded-2xl border ${pBo} ${pB} p-7 md:p-8`}>
+                  <div key={i} className={`reveal border ${pBo} ${pB} bg-almost-white dark:bg-white/3 p-7 md:p-8`}>
                     <div className="flex items-start gap-5 mb-4">
-                      <span className={`font-heading font-semibold text-4xl ${pA} opacity-25 leading-none flex-shrink-0 w-10`}>{p.phase}</span>
+                      <span className={`font-heading font-medium text-4xl ${pA} opacity-25 leading-none flex-shrink-0 w-10`}>{p.phase}</span>
                       <div>
-                        <h3 className="font-heading font-semibold text-lg md:text-xl text-almost-black leading-tight">{p.title}</h3>
+                        <h3 className="font-heading font-semibold text-lg md:text-xl text-almost-black dark:text-almost-white leading-tight">{p.title}</h3>
                         {p.period && <p className={`text-[0.72rem] font-semibold tracking-wide mt-1 ${pA}`}>{p.period}</p>}
                       </div>
                     </div>
                     <ul className={`grid ${listGrid(p.tasks.length)} gap-x-8 gap-y-2 pl-[60px]`}>
                       {p.tasks.map((t, j) => (
-                        <li key={j} className="flex items-start gap-2.5 font-body text-sm text-[#3a4a42] leading-relaxed">
+                        <li key={j} className="flex items-start gap-2.5 font-body text-sm text-[#3a4a42] dark:text-white/55 leading-relaxed">
                           <span className={`mt-[6px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${pD}`} />{t}
                         </li>
                       ))}
@@ -783,11 +846,11 @@ export default function ProjectDetail() {
             <div className="reveal"><SL>Ce que j'ai livré</SL></div>
             <div className={`grid ${hasAppDel && hasSiteDel ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 max-w-xl'} gap-8`}>
               {hasAppDel && (
-                <div className={`reveal rounded-2xl p-7 border ${accentBorder} ${accentSoft}`}>
+                <div className={`reveal p-7 border ${accentBorder} ${accentSoft}`}>
                   <p className={`text-[0.72rem] font-semibold tracking-[0.12em] uppercase mb-5 ${accent}`}>Application web</p>
                   <ul className="flex flex-col gap-3">
                     {project.livrablesApp.map((d, i) => (
-                      <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#3a4a42] leading-relaxed">
+                      <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#3a4a42] dark:text-white/60 leading-relaxed">
                         <span className={`mt-[6px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${accentBg}`} />{d}
                       </li>
                     ))}
@@ -795,13 +858,13 @@ export default function ProjectDetail() {
                 </div>
               )}
               {hasSiteDel && (
-                <div className={`reveal rounded-2xl p-7 border border-bright-orange/25 bg-bright-orange/10`}>
+                <div className="reveal p-7 border border-bright-orange/25 bg-bright-orange/10 dark:bg-bright-orange/15">
                   <p className="text-[0.72rem] font-semibold tracking-[0.12em] uppercase mb-5 text-bright-orange">
                     {hasAppDel ? 'Site vitrine' : 'Livrables'}
                   </p>
                   <ul className="flex flex-col gap-3">
                     {project.livrablesSite.map((d, i) => (
-                      <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#3a4a42] leading-relaxed">
+                      <li key={i} className="flex items-start gap-2.5 font-body text-sm text-[#3a4a42] dark:text-white/60 leading-relaxed">
                         <span className="mt-[6px] w-1.5 h-1.5 rounded-full flex-shrink-0 bg-bright-orange" />{d}
                       </li>
                     ))}
@@ -815,19 +878,19 @@ export default function ProjectDetail() {
 
       {hasLearnings && (
         <>
-          <SectionDivider variant={isDesign ? 'og' : 'go'} />
-          <section className="relative bg-forest-green px-6 md:px-12 py-20 md:py-24 overflow-hidden" data-cursor="white">
+          <SectionDivider variant={isDesign ? 'og' : 'go'} className="z-99999" />
+          <section className="relative bg-forest-green px-6 md:px-12 py-20 md:py-24 overflow-hidden grid-pattern" data-cursor="white">
             <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle,rgba(24,143,126,.12) 1px,transparent 1px)', backgroundSize: '28px 28px' }} />
             <div className="relative z-10">
-              <div className="reveal inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-green/90 mb-10">
-                <span className="w-6 h-px bg-bright-green/90" />Ce que j'ai appris
+              <div className="reveal inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-green/70 mb-10">
+                <span className="w-6 h-px bg-bright-green/70" />Ce que j'ai appris
               </div>
               <div className={`grid ${autoGrid(project.learnings.length)} gap-5`}>
                 {project.learnings.map((l, i) => (
-                  <div key={i} className="reveal bg-white/4 border border-white/8 rounded-2xl p-7">
+                  <div key={i} className="reveal bg-white/4 border border-white/8 p-7">
                     <span className="font-heading font-semibold text-3xl text-bright-green block mb-3 leading-none">0{i + 1}</span>
-                    <h3 className="font-heading font-semibold text-base text-almost-white mb-3">{l.title}</h3>
-                    <p className="font-body text-sm leading-relaxed text-white/55">{l.body}</p>
+                    <h3 className="font-heading font-medium text-base text-dark-green dark:text-almost-white mb-3">{l.title}</h3>
+                    <p className="font-body text-sm leading-relaxed text-almost-black/55 dark:text-white/55">{l.body}</p>
                   </div>
                 ))}
               </div>
@@ -843,9 +906,9 @@ export default function ProjectDetail() {
             <div className="reveal"><SL>Ce que je ferais différemment</SL></div>
             <div className={`grid ${autoGrid(project.improvements.length)} gap-5`}>
               {project.improvements.map((imp, i) => (
-                <div key={i} className="reveal rounded-2xl p-7 border border-black/8 bg-[#f2f4f2]">
-                  <h3 className="font-heading font-semibold text-base text-almost-black mb-3">{imp.title}</h3>
-                  <p className="font-body text-sm leading-relaxed text-[#4a5a52]">{imp.body}</p>
+                <div key={i} className="reveal p-7 border border-black/8 dark:border-dark-green bg-almost-white dark:bg-dark-green/40">
+                  <h3 className="font-heading font-medium text-base text-forest-green dark:text-almost-white mb-3">{imp.title}</h3>
+                  <p className="font-body text-sm leading-relaxed text-[#4a5a52] dark:text-white/50">{imp.body}</p>
                 </div>
               ))}
             </div>
@@ -853,14 +916,13 @@ export default function ProjectDetail() {
         </>
       )}
 
-      <SectionDivider variant={isDesign ? 'og' : 'go'} />
+      <SectionDivider variant={isDesign ? 'og' : 'go'} className="z-99999" />
 
       {nextProject && (
         <section
           onClick={() => navigate(`/project/${project.next}`)}
-          className={`relative group cursor-none overflow-hidden px-6 md:px-12 py-16 md:py-20 bg-gradient-to-br ${nextProject.gradient}`}
+          className={`relative group cursor-none overflow-hidden px-6 md:px-12 py-16 md:py-20 ${accentBg}`}
         >
-          <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 24px)' }} />
           <div className="relative z-10 flex items-center justify-between gap-6">
             <div className="min-w-0">
               <p className="font-body text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-white/50 mb-2">Projet suivant</p>

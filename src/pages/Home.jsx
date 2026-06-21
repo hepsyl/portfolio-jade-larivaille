@@ -14,20 +14,20 @@ const portals = [
     accent: 'green',
   },
   {
-    id: 'craft',
+    id: 'lab',
     number: '#02',
+    title: 'Lab',
+    desc: '3D, expériences immersives, projets techniques... mon lieu d\'expérimentation.',
+    to: '/lab',
+    accent: 'green',
+  },
+  {
+    id: 'craft',
+    number: '#03',
     title: 'Craft',
     desc: 'Identités visuelles, logos, motion design et explorations graphiques.',
     to: '/craft',
     accent: 'orange',
-  },
-  {
-    id: 'lab',
-    number: '#03',
-    title: 'Lab',
-    desc: 'Expériences 3D, prototypes techniques et projets expérimentaux.',
-    to: '/lab',
-    accent: 'green',
   },
 ]
 
@@ -84,8 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Portals ── */}
-      <section id="portals" className="px-6 md:px-12 py-24 bg-almost-white dark:bg-forest-green">
+      <section id="portals" className="px-6 md:px-12 py-24">
         <div className="reveal mb-4">
           <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-dark-orange dark:text-bright-orange mb-3">
             <span className="w-6 h-px bg-bright-orange" />
@@ -111,12 +110,11 @@ function PortalCard({ portal, navigate }) {
       onClick={() => navigate(portal.to)}
       className="reveal group relative overflow-hidden draw p-8 min-h-[260px]
         border border-black/8 dark:border-white/8
-        bg-almost-white dark:bg-white/3
+        bg-almost-white dark:bg-forest-green
         cursor-none flex flex-col justify-between
         transition-all duration-300 hover:-translate-y-1
         hover:shadow-[0_16px_40px_rgba(0,9,3,0.08)] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.3)]"
     >
-      {/* Number + arrow */}
       <div className="flex items-start justify-between">
         <span className="font-body text-sm font-semibold tracking-[0.16em] text-[#9aaa9e] dark:text-white/30">
           {portal.number}
@@ -130,7 +128,6 @@ function PortalCard({ portal, navigate }) {
         </span>
       </div>
 
-      {/* Title + desc */}
       <div>
         <h3 className="font-heading font-semibold text-[2rem] tracking-tight text-almost-black dark:text-almost-white mb-2 leading-none">
           {portal.title}

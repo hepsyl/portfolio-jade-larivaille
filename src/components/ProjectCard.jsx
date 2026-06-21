@@ -13,21 +13,21 @@ export function ProjectCard({ project }) {
   return (
     <div
       onClick={() => navigate(`/project/${project.id}`)}
-      className="reveal group bg-almost-white dark:bg-white/4 border border-black/8 dark:border-white/8
-        rounded-2xl overflow-hidden cursor-none
+      className="reveal group bg-almost-white dark:bg-forest-green border border-black/8 dark:border-white/8
+         overflow-hidden cursor-none
         transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-        hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,9,3,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+        hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,9,3,0.5)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
     >
       <div className="relative overflow-hidden">
         {project.image ? (
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-[40vh] object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-[220px] bg-gradient-to-br from-bright-green/20 to-bright-orange/10 flex items-center justify-center">
-            <span className="font-heading font-semibold text-almost-black/10 dark:text-white/10 text-5xl tracking-tighter">
+            <span className="font-heading font-regular text-almost-black/10 dark:text-white/10 text-5xl tracking-tighter">
               {project.title}
             </span>
           </div>
