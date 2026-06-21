@@ -46,17 +46,17 @@ export default function Home() {
           style={{ background: 'radial-gradient(circle, rgba(24,143,126,0.08), transparent 70%)' }} />
         <div className="flex justify-between">
         <div className="relative z-10 max-w-3xl">
-          <div className="hero-anim animate-fade-up-1 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-bright-green mb-7">
-            <span className="w-7 h-px bg-bright-green" />
+          <div className="hero-anim animate-fade-up-1 inline-flex items-center gap-2 text-[0.6rem] md:text-xs font-semibold tracking-[0.18em] uppercase text-bright-green mb-7">
+            <span className="w-4 md:w-7 h-px bg-bright-green" />
             Disponible pour collaboration
           </div>
 
-          <h1 className="hero-anim animate-fade-up-2 font-heading font-semibold text-[clamp(3rem,6vw,5.5rem)] leading-[1.04] tracking-tight text-almost-black dark:text-almost-white mb-6">
+          <h1 className="hero-anim animate-fade-up-2 font-heading font-semibold text-[3rem] md:text-[5.5rem] leading-[1.04] tracking-tight text-almost-black dark:text-almost-white mb-6">
             Creative<br />
             <span className="text-bright-orange">Technologist</span>
           </h1>
 
-          <p className="hero-anim animate-fade-up-3 font-body text-base text-[#4a5a52] dark:text-white/50 leading-relaxed max-w-md mb-10">
+          <p className="hero-anim animate-fade-up-3 font-body text-base text-almost-black/90 dark:text-white/50 leading-relaxed max-w-md mb-10">
             Curieuse de tout, je construis des interfaces intuitves et esthétiques, experimentant entre design et code.
           </p>
 
@@ -76,11 +76,39 @@ export default function Home() {
             </button>
           </div>
         </div>
-          <div id="mouse-scroll" className="flex w-full flex-col items-center">
+        <div className="flex">
+          <div id="mouse-scroll" className="absolute left-60 flex w-full flex-col items-center mt-20">
               <span class="down-arrow-1"></span>
               <span class="down-arrow-2"></span>
               <span class="down-arrow-3"></span>
           </div>
+          <div class="absolute right-40 z-10 hidden md:flex justify-center items-center hero-anim animate-fade-in">
+            <div class="relative bg-almost-black rounded-3xl p-11 w-80 overflow-hidden" data-cursor="white">
+              <div class="absolute -top-15 -right-15 w-50 h-50 rounded-full bg-bright-green/20"></div>
+              <p class="font-body text-[0.7rem] font-semibold tracking-[0.16em] uppercase text-bright-green mb-3">Profil</p>
+              <p class="font-heading font-semibold text-2xl text-almost-white mb-5">Jade Larivaille</p>
+              <div class="flex flex-wrap gap-2 mb-7">
+                <span class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-green/20 text-[#4ecfbe]">Développement</span>
+                <span data-cursor="orange" class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-orange/20 text-[#f5894e]">UX / UI Design</span>
+                <span class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-green/20 text-[#4ecfbe]">React</span>
+                <span data-cursor="orange" class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-orange/20 text-[#f5894e]">Figma</span>
+                <span class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-green/20 text-[#4ecfbe]">TypeScript</span>
+              </div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="font-heading font-semibold text-4xl text-almost-white">3</span>
+                <span class="text-xs text-white/80">ème année à l'Ecole Nationale Supérieure de Cognitique (ENSC)</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="font-heading font-semibold text-4xl text-almost-white">6+</span>
+                <span class="text-xs text-white/80">projets réalisés</span>
+                </div>
+              <div class="absolute bottom-6 right-7 flex gap-2">
+                <div class="w-2 h-2 rounded-full bg-bright-orange"></div>
+                <div class="w-2 h-2 rounded-full bg-bright-green"></div>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </section>
 

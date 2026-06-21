@@ -31,20 +31,20 @@ export default function Navbar() {
       <Link
         to="/"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="font-heading font-semibold text-[1.1rem] tracking-tight text-almost-black dark:text-almost-white"
+        className="font-heading font-semibold text-xs tracking-tight text-almost-black dark:text-almost-white"
       >
         {!darkMode && <img src={LogoELJI_dark} className="h-[4vh] w-auto"/>}
         {darkMode && <img src={LogoELJI_white} className="h-[4vh] w-auto"/>}
       </Link>
 
-      <div className="flex items-center gap-6 md:gap-8">
+      <div className="flex items-center gap-4 md:gap-8">
         {links.map(link => (
           <Link
             key={link.label}
             to={link.to}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className={`
-              relative font-body text-sm tracking-wide transition-colors duration-200
+              relative font-body text-xs md:text-sm tracking-wide transition-colors duration-200
               after:absolute after:bottom-[-3px] after:left-0 after:h-[1.5px] after:bg-bright-green
               after:transition-all after:duration-300
               ${isActive(link)

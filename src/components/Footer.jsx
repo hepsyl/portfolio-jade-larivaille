@@ -9,14 +9,14 @@ export default function Footer() {
 
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-4xl">
           <div className="reveal">
-            <div className="inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-orange mb-3">
+            <div className="inline-flex items-center gap-2.5 text-xs font-medium tracking-[0.18em] uppercase text-bright-orange mb-3">
               <span className="w-6 h-px bg-bright-orange" />
               Contact
             </div>
-            <h2 className="font-heading font-semibold text-[clamp(2rem,3.5vw,2.8rem)] tracking-tight leading-[1.1] text-almost-white mb-4">
+            <h2 className="font-heading font-medium text-[clamp(2rem,3.5vw,2.8rem)] tracking-tight leading-[1.1] text-almost-white mb-4">
               Intéressé·e par<br />une collaboration ?
             </h2>
-            <p className="font-body text-[0.95rem] leading-relaxed text-white/60 max-w-sm">
+            <p className="font-body text-sm leading-relaxed text-white/90 max-w-sm">
               N'hésitez pas à me contacter pour discuter de vos projets, que ce soit pour du développement front-end ou du design UI/UX.
             </p>
           </div>
@@ -38,7 +38,7 @@ export default function Footer() {
                   <span className="text-lg">{icon}</span>
                   <div>
                     <p className="font-body text-[0.85rem] font-semibold text-almost-white">{label}</p>
-                    <p className="font-body text-[0.72rem] text-white/40">{sub}</p>
+                    <p className="font-body text-[0.72rem] text-white/80">{sub}</p>
                   </div>
                 </div>
                 <div className="flex group">
