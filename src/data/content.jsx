@@ -83,17 +83,6 @@ export const labProjects = [
     image: compagnonCover,
   },
   {
-    id: 'ensemenc',
-    title: 'ENSemenC',
-    tags: [
-      { label: 'Programmation Orientée Objet', type: 'dev' },
-      { label: 'Jeu terminal',                 type: 'dev' },
-    ],
-    desc: "Projet de fin de semestre : jeu de simulation de potager en programmation orientée objet.",
-    tech: ['C#', 'POO'],
-    image: ensemencCover,
-  },
-  {
     id: 'couch',
     filter: ['lab'],
     title: 'Couch',
@@ -104,6 +93,17 @@ export const labProjects = [
     desc: "Projet d'apprentissage de React Three Fiber : configurateur de canapé avec modèle 3D'.",
     tech: ['React Three Fiber', 'JavaScript', 'React', 'CSS', 'Figma'],
     image: couchImg,
+  },
+  {
+    id: 'ensemenc',
+    title: 'ENSemenC',
+    tags: [
+      { label: 'Programmation Orientée Objet', type: 'dev' },
+      { label: 'Jeu terminal',                 type: 'dev' },
+    ],
+    desc: "Projet de fin de semestre : jeu de simulation de potager en programmation orientée objet.",
+    tech: ['C#', 'POO'],
+    image: ensemencCover,
   },
 ]
 

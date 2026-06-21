@@ -391,7 +391,7 @@ const projects = {
     links: [
       { label: 'Site web du projet', url: 'https://jadelarivaille.wixsite.com/compagnon-virtuel/', note: 'Découvrez en plus !' },
     ],
-    next: 'ensemenc',
+    next: 'couch',
   },
 
   octotune: {
@@ -560,7 +560,7 @@ const projects = {
     ],
     improvements: [],
     links: [{ label: 'Repository GitHub', url: 'https://github.com/PROGAV-PRJ25/projet-ensemenc-robert-larivaille', note: 'Un rapport complet est disponible sur le repository' }],
-    next: 'couch',
+    next: 'compagnon',
   },
 
   couch: {
@@ -618,7 +618,7 @@ const projects = {
     links: [{ label: 'Essayer le configurateur', url: 'https://hepsyl.github.io/couch-personalisation/', note: null },
       { label: 'Repository GitHub', url: 'https://github.com/hepsyl/couch-personalisation', note: null }
     ],
-    next: 'compagnon',
+    next: 'ensemenc',
   },
 }
 
