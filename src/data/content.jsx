@@ -21,10 +21,9 @@ export const workProjects = [
     id: 'izired',
     title: 'IZIRED',
     tags: [
-      { label: 'Logiciel',     type: 'dev'    },
-      { label: 'UX Design',    type: 'design' },
-      { label: 'UI Design',    type: 'design' },
-      { label: 'Site vitrine', type: 'dev'    },
+      { label: 'Front-end Saas',     type: 'dev'    },
+      { label: 'UX/UI Design',    type: 'design' },
+      { label: 'Site vitrine', type: 'design'    },
     ],
     desc: "Création d'une nouvelle direction artistique d'une plateforme de valorisation et de simulation de projets immobiliers. Développement du front-end du logiciel et prototypage d'un nouveau site vitrine sur Figma.",
     tech: ['TypeScript', 'React', 'Figma'],
@@ -34,9 +33,8 @@ export const workProjects = [
     id: 'fifaac',
     title: 'FIFAAC 2025',
     tags: [
-      { label: 'UX Design', type: 'design' },
-      { label: 'UI Design', type: 'design' },
-      { label: 'Site web',  type: 'other'  },
+      { label: 'UX/UI Design', type: 'design' },
+      { label: 'Site web', type: 'other' },
     ],
     desc: "Direction artistique et conception de la maquette du site web du Festival International du Film d'Architecture et des Aventures Constructives.",
     tech: ['Figma', 'UX Research'],
@@ -46,9 +44,8 @@ export const workProjects = [
     id: 'octotune',
     title: "Octo'Tune",
     tags: [
-      { label: 'UX Design',          type: 'design' },
-      { label: 'UI Design',          type: 'design' },
-      { label: 'Application mobile', type: 'dev'    },
+      { label: 'UX/UI Design',          type: 'design' },
+      { label: 'Front-end mobile', type: 'dev'    },
       { label: 'UX Research',        type: 'other'  },
     ],
     desc: "Projet transpromotions (1ère et 2ème années) de création d'une application pour la gestion du club musique de l'ENSC : réservation de salle, planning, évènements à venir, etc.",
@@ -59,7 +56,6 @@ export const workProjects = [
     id: 'sciencealasource',
     title: 'Science à la source',
     tags: [
-      { label: 'UX Design', type: 'design' },
       { label: 'UI Design', type: 'design' },
       { label: 'Site web',  type: 'other'  },
     ],
@@ -74,7 +70,7 @@ export const labProjects = [
     id: 'compagnon',
     title: 'Compagnon Virtuel',
     tags: [
-      { label: 'Programmation', type: 'dev'    },
+      { label: 'Programmation C#', type: 'dev'    },
       { label: '3D',            type: 'design' },
       { label: 'CCU',           type: 'other'  },
     ],
@@ -99,7 +95,7 @@ export const labProjects = [
     title: 'ENSemenC',
     tags: [
       { label: 'Programmation Orientée Objet', type: 'dev' },
-      { label: 'Jeu terminal',                 type: 'dev' },
+      { label: 'Jeu terminal C#',                 type: 'dev' },
     ],
     desc: "Projet de fin de semestre : jeu de simulation de potager en programmation orientée objet.",
     tech: ['C#', 'POO'],
