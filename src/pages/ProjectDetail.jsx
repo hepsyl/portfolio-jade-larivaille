@@ -148,7 +148,7 @@ const projects = {
     summary: {
       tldr: "En 2 mois de stage, j'ai redesigné l'interface d'une plateforme SaaS immobilière et développé le front-end, puis conçu le site vitrine déployé sur izired.com.",
       points: [
-        "Stack React + TypeScript + Tailwind CSS - nouvelles pour moi au départ du stage",
+        "Stack React + TypeScript + Tailwind CSS - technologies nouvelles pour moi au début du stage",
         "4 modules principaux redesignés + priorisation du développement des composants pour faciliter la passation",
         "15+ pages Figma pour le site vitrine, fidèle à ~99% en production",
         "Poursuite en freelance après le stage (oct.–déc. 2025)",
@@ -685,7 +685,7 @@ export default function ProjectDetail() {
         <div className="relative z-10 max-w-3xl">
           <div className="flex flex-wrap gap-2 mb-5">
             {project.tags.map(t => (
-              <span key={t} className="text-[0.67rem] font-semibold tracking-[0.08em] uppercase px-2.5 py-1 rounded-full bg-white/15 text-almost-black/90 dark:text-almost-white/90 backdrop-blur-sm">{t}</span>
+              <span key={t} className="text-[0.67rem] font-semibold tracking-[0.08em] uppercase px-2.5 py-1 rounded-full bg-white/15 text-dark-green/90 dark:text-almost-white/90 border border-1 border-green-700">{t}</span>
             ))}
           </div>
           <h1 className="font-heading font-semibold text-[clamp(2.4rem,6vw,5rem)] leading-[1.05] tracking-tight text-dark-orange dark:text-almost-white mb-3">{project.title}</h1>

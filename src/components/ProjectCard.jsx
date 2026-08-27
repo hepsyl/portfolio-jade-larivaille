@@ -56,13 +56,6 @@ export function ProjectCard({ project }) {
         <p className="font-body text-[0.83rem] leading-[1.7] text-[#4a5a52] dark:text-white/50 mb-4">
           {project.desc}
         </p>
-        <div className="flex flex-wrap gap-1.5">
-          {project.tech.map(t => (
-            <span key={t} className="text-[0.67rem] font-semibold px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/8 text-[#4a5a52] dark:text-white/40 tracking-wide">
-              {t}
-            </span>
-          ))}
-        </div>
       </div>
     </div>
   )

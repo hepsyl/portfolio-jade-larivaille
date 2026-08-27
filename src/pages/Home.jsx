@@ -53,7 +53,7 @@ export default function Home() {
 
           <h1 className="hero-anim animate-fade-up-2 font-heading font-semibold text-[3rem] md:text-[5.5rem] leading-[1.04] tracking-tight text-almost-black dark:text-almost-white mb-6">
             Creative<br />
-            <span className="text-bright-orange">Technologist</span>
+            <span className="text-bright-orange">Developer</span>
           </h1>
 
           <p className="hero-anim animate-fade-up-3 font-body text-base text-almost-black/90 dark:text-white/50 leading-relaxed max-w-md mb-10">
