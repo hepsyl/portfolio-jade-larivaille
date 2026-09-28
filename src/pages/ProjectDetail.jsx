@@ -21,7 +21,6 @@ import fifaacCamera from '../assets/fifaac_camera.png'
 import fifaacProgramme from '../assets/fifaac_programme.png'
 import fifaacMoodboard from '../assets/fifaac_moodboard.png'
 import salsHero from '../assets/sals_cover.png'
-import salsFiltre from '../assets/sals_filtre.png'
 import salsContenu from '../assets/sals_contenu.png'
 import salsWF from '../assets/sals_wf.png'
 import salsPublications from '../assets/sals_publications.jpeg'
@@ -37,6 +36,10 @@ import ensemencClasse from '../assets/ensemenc_diagramme.png'
 import ensemencWiki from '../assets/ensemenc_wiki.png'
 import couchFigma from '../assets/couch_figma.png'
 import couchPage from '../assets/couch_cover.png'
+import orbitCover from '../assets/orbit_logo.png'
+import orbitBM from '../assets/orbit_bm.png'
+import orbitPersona from '../assets/orbit_persona.jpeg'
+import orbitScamper from '../assets/orbit_scamper.png'
 
 
 function autoGrid(n) {
@@ -509,6 +512,102 @@ const projects = {
     learnings: [],
     improvements: [],
     links: [{ label: 'Site web', url: 'https://sciencealasource.u-bordeaux.fr/', note: null }],
+    next: 'orbit',
+  },
+
+  orbit: {
+    title: 'Orbit',
+    subtitle: "Projet de design thinking autour d'une solution pour libérer les étudiants de leur charge physique et/ou mentale.",
+    type: 'design',
+    year: '2026',
+    duration: '2 mois',
+    role: 'UX/UI Designer',
+    client: 'Projet scolaire - Université Albert Ludwig à Freiburg im Breisgau',
+    team: 'Travail en collaboration avec deux autres étudiantes',
+    tags: ['Figma', 'UX Design', 'UI Design', 'UX Research'],
+    summary: {
+      tldr: "Recherche utilisateur autour de la problématique posée pour cadrer le sujet et réalisation d'un prototype de notre solution.",
+      points: ["UX Research : observations, persona, entretiens guerilla", "Application de méthodes d'idéation : 6 hats, POVs, contradictions", "Proposition d'un business model : Value Proposition Canva", "Prototypage sur Figma : wireframe et haute fidélité"],
+    },
+    sections: [
+      {
+        heading: "Contexte",
+        content: "En semestre d'échange à Freiburg-im-Breisgau, j'ai suivi un cours de design thinking axé sur le développement durable. Nous avons du réaliser tout au long du semestre, un projet en trinôme afin de proposer une solution permettant d'intervenir sur la question suivante :",
+        quote: "How do students experience carrying and managing their “stuff” ?",
+      },
+      {
+        heading: "Comprendre le besoin",
+        content: "La première partie du travail consistait à identifier les difficultés des étudiants liées à ce sujet. Nous avons donc utilisé plusieurs méthodes et identifié plusieurs points de friction.",
+        list: ["Recherche utilisateur \"guerilla\" : 5 entretiens et 5 observations avec des étudiants du campus", "Points de friction : beaucoup d'items inutiles 'au cas où', peu d'organisation, gourdes qui se renversent..."],
+      },
+      {
+        heading: "Définir le besoin",
+        content: "A partir des profils identifiés parmis les étudiants, nous avons pu établir le persona de Sophie, étudiante de 21 ans très occupée qui a du mal à concilier études et vie personnelle. Ensuite, nous avons pu reformuler les besoin des étudiants de leur point de vue, ainsi qu'établir une problématique plus précise pour notre solution :",
+        list: [
+          "Les étudiants ont besoin d'un mode de transport flexible et ergonomique pour transporter les affaires qui leur seraient utiles en cas d'imprévu car cela représente une charge mentale et physique importante",
+          "Les étudiants ont besoin de compartiments appropriés pour transporter leur nourriture et leur boisson car le risque de renversement et de détérioration représente une certaine charge mentale.",
+          "Les étudiants ont besoin de maintenir la batterie de leurs appareils électroniques toute la journée car ils sont dépendants de ceux-ci pour les études et leur vie personnelle.",
+          "Les étudiants ont besoin d'un moyen facile pour s'organiser pour compléter à temps leurs projets, examens, et travaux à rendre.",
+          "Problématique : Comment pouvons-nous aider les étudiants à se sentir prêt en cas d'imprévu sans ajouter de charge mentale ou physique?",
+        ]
+      },
+      {
+        heading: "Idéation",
+        content: "La première étape de l'idéation à été de faire émerger des idées via la méthode TRIZ, notamment aux travers de contradiction. Ensuite, nous en avons sélectionné une et avons appliqué la méthode SCAMPER pour identifier de potentielles solutions.",
+        list: [
+          "Au plus les étudiants veulent être organisés, le plus de temps ils doivent passer à construire et optimiser leur emploi du temps",
+        ]
+      },
+      {
+        heading: "Notre solution",
+        content: "Nous avons fini par aboutir sur une proposition d'une application d'aide à l'organisation avec un agent IA. Le but était de faciliter l'ajout d'évènements au planning à l'aide d'une commande vocale, ainsi que de permettre d'optimiser les plannings de manière personnalisée selon les besoin de l'étudiant.e. Nous avons fait ce choix car parmis nos idées, il sembalit que c'était la solution qui étaot la plus en accord avec notre persona et les besoin identifiés lors du processus. Voici les fonctionnalités principales :",
+        list: [
+          "Feedback via des quizz d'amélioration de l'algorithme, ainsi qu'un suivi quotidien de l'humeur et du niveau d'énergie de l'étudiant.e",
+          "Accès rapide à un chat et assistant vocal IA",
+          "Personnalisation via un onboarding et des paramètres précis et détaillés : selon les préferences, le chronotype et les contraintes de travail",
+          "Aides à l'organisation : to do list, items à emporter par activité, planning, accès direct à l'itinéraire..."
+        ]
+      },
+      {
+        heading: "Tests utilisateurs",
+        content: "Le temps disponible pour réaliser des tests utilisateurs étant assez limité, nous n'avons pu en effectuer que 2, mais les retours nous ont permis de réaliser une version 2, plus cohérente, de notre maquette",
+        list: [
+          "Amélioration des couleurs pour plus de clarté",
+          "Correction de bugs d'interactions sur le prototype",
+          "Satisfaction globale au vue de l'application, les étudiantes interrogées, correspondant au profil de notre persona ont rapporté qu'elles se verraient utiliser une telle solution et que ça leur serait utile.",
+        ]
+      },
+    ],
+    objectives: ["Mettre en application les méthodes de design thinking vues en classe", "Aboutir à un prototype présentable le jour de l'oral"],
+    constraints: ["Projet sur un semestre à avancer en parallèle des cours", "Solution que l'on puisse prototyper par la suite (difficile de proposer des services)."],
+    process: [
+      { phase: '01', title: 'Compréhension du sujet', period: '', color: 'orange', tasks: ["5 entretiens", "5 observations"] },
+      { phase: '02', title: 'Définition des besoins et enjeux', period: '', color: 'orange', tasks: ["Réalisation d'un persona", "Recherche de POVs", "Reformulation de la problématique"] },
+      { phase: '03', title: 'Idéation', period: '', color: 'orange', tasks: ["Application de la méthode TRIZ : identification de contradictions", "Application de la méthode SCAMPER"] },
+      { phase: '04', title: 'Prototypage de la solution', period: '', color: 'orange', tasks: ["1er prototype basse fidélité", "Maquette Figma haute fidélité : v1 et v2"] },
+      { phase: '05', title: 'Définition du business model', period: '', color: 'orange', tasks: ["Réalisation d'un Proposition Value Canva (PVC)", "Réflexion autour des enjeux sociaux et de durabilité"] },
+      { phase: '05', title: 'Tests utilisateurs', period: '', color: 'orange', tasks: ["Passation de deux tests utilisateurs", "Modification du prototype en une v2 suite aux retours"] },
+    ],
+    livrablesApp: ["Prototype haute fidélité de l'application"],
+    livrablesSite: ["Présentation orale des travaux réalisés lors du semestre."],
+    gallery: [
+      { image: orbitCover, caption: "Logo Orbit" },
+      { image: orbitBM, caption: "Business Model"},
+      { image: orbitPersona, caption: "Persona"},
+      { image: orbitScamper, caption: "Application de la méthode SCAMPER"},
+    ],
+    techs: [{ label: 'Outil utilisé', value: 'Figma' }],
+    techsNote: null,
+    learnings: [
+            { title: "Aller plus loin que la première idée", body: "Il a été formateur pour nous d'avoir le temps de questionner la problématique et l'angle d'attaque pour ce projet. En effet, l'idée première était d'apporter une solution centrée sur le sac des étudiants, mais ce projet nous a forcées à aller au delà des a priori et considérer le problème autrement." },
+    ],
+    improvements: [
+            { title: "Meilleure gestion du temps", body: "J'étais la seule personne du groupe à savoir prototyper sur Figma, donc cette partie a pris plus de temps qu'anticipé, nous aurions aimé avoir le temps de réaliser plus de tests utilisateurs." },
+],
+    links: [
+      { label: 'Prototype Figma v2', url: 'https://www.figma.com/proto/W86CL7Ej0MVbytsHEwEVBW/Schedule-AI?node-id=105-435&p=f&t=xXovyI4HZEwhn0Tf-1&scaling=scale-down&content-scaling=fixed&page-id=105%3A434', note: null },
+      { label: 'Wireframe', url: 'https://www.figma.com/proto/W86CL7Ej0MVbytsHEwEVBW/Schedule-AI?node-id=14-1602&p=f&t=h56xhfaZYSUCt6Uk-1&scaling=scale-down&content-scaling=fixed&page-id=14%3A1601', note: null }
+    ],
     next: 'izired',
   },
 

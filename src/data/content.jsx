@@ -15,6 +15,7 @@ import maisonLeo from '../assets/Maison_Leo_v2.png'
 import pixelArt from '../assets/pixel_art_assets.png'
 import lebowskiImg from '../assets/lebowski.png'
 import couchImg from '../assets/couch_cover.png'
+import orbitCover from '../assets/orbit_logo.png'
 
 export const workProjects = [
   {
@@ -62,6 +63,17 @@ export const workProjects = [
     desc: "Prototypage haute fidélité d'un blog recensant les contenus publiés par l'Université de Bordeaux.",
     tech: ['Figma', 'UI Design'],
     image: salsCover,
+  },
+  {
+    id: 'orbit',
+    title: 'Orbit',
+    tags: [
+      { label: 'UX Research', type: 'design' },
+      { label: 'UX/UI Design',  type: 'design'  },
+    ],
+    desc: "Projet de Design Thinking autour d'une solution pour décharger les étudiants, physiquement et/ou mentalement.",
+    tech: ['Figma', 'UI Design', 'UX Research'],
+    image: orbitCover,
   },
 ]
 
