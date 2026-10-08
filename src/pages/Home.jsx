@@ -83,15 +83,15 @@ export default function Home() {
               <span class="down-arrow-3"></span>
           </div>
           <div class="absolute right-40 z-10 hidden md:flex justify-center items-center hero-anim animate-fade-in">
-            <div class="relative bg-almost-black rounded-3xl p-11 w-80 overflow-hidden" data-cursor="white">
+            <div class="relative bg-almost-black rounded-3xl p-11 w-80 overflow-hidden">
               <div class="absolute -top-15 -right-15 w-50 h-50 rounded-full bg-bright-green/20"></div>
               <p class="font-body text-[0.7rem] font-semibold tracking-[0.16em] uppercase text-bright-green mb-3">Profil</p>
               <p class="font-heading font-semibold text-2xl text-almost-white mb-5">Jade Larivaille</p>
               <div class="flex flex-wrap gap-2 mb-7">
                 <span class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-green/20 text-[#4ecfbe]">Développement</span>
-                <span data-cursor="orange" class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-orange/20 text-[#f5894e]">UX / UI Design</span>
+                <span class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-orange/20 text-[#f5894e]">UX / UI Design</span>
                 <span class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-green/20 text-[#4ecfbe]">React</span>
-                <span data-cursor="orange" class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-orange/20 text-[#f5894e]">Figma</span>
+                <span class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-orange/20 text-[#f5894e]">Figma</span>
                 <span class="text-[0.7rem] font-semibold px-3 py-1 rounded-full tracking-wide bg-bright-green/20 text-[#4ecfbe]">TypeScript</span>
               </div>
               <div class="flex items-center gap-1.5 mb-1.5">

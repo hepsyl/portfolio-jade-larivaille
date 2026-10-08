@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import {ThemeProvider} from './context/ThemeContext'
 import Navbar from './components/Navbar'
-import Cursor from './components/Cursor'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Work from './pages/Work'
@@ -15,7 +14,6 @@ export default function App() {
   return (
     <ThemeProvider>
       <ScrollToTop />
-      <Cursor />
       <Navbar />
       <Routes>
         <Route path=""         element={<Home />}  />

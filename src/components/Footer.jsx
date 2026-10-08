@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-forest-green" data-cursor="white">
+    <footer className="bg-forest-green">
       <section id="contact" className="relative px-6 md:px-12 py-24 overflow-hidden">
         <div className="absolute w-[500px] h-[500px] rounded-full -right-40 -top-40 pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(24,143,126,0.15), transparent 70%)' }} />

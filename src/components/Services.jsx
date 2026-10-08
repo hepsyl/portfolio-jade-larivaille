@@ -44,7 +44,6 @@ export default function Services() {
         {services.map((s) => (
           <div
             key={s.title}
-            data-cursor={s.type === 'design' ? 'orange' : undefined}
             className={`reveal group relative bg-almost-white rounded-2xl p-10 border border-black/7 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5 hover:shadow-[0_16px_44px_rgba(0,9,3,0.08)]`}
           >
             <div

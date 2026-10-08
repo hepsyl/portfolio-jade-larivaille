@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import SectionDivider from '../components/SectionDivider'
 import Footer from '../components/Footer'
-import Carousel from '../components/Carousel'
+import Carousel from '../components/Carousel/Carousel'
 import { useReveal } from '../hooks/useReveal'
 import { useDarkMode } from '../context/ThemeContext'
 import iziredCover     from '../assets/izired_cover.png'
@@ -881,7 +881,7 @@ export default function ProjectDetail() {
             )}
           </div>
 
-          <div className="flex flex-col gap-7 lg:sticky lg:top-28 z-50">
+          <div className="flex flex-col gap-7 lg:top-28 z-50">
             <Carousel items={project.gallery} gradient={project.gradient} />
 
             {project.techs?.length > 0 && (
@@ -978,7 +978,7 @@ export default function ProjectDetail() {
       {hasLearnings && (
         <>
           <SectionDivider variant={isDesign ? 'og' : 'go'} className="z-99999" />
-          <section className="relative bg-forest-green px-6 md:px-12 py-20 md:py-24 overflow-hidden grid-pattern" data-cursor="white">
+          <section className="relative bg-forest-green px-6 md:px-12 py-20 md:py-24 overflow-hidden grid-pattern">
             <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle,rgba(24,143,126,.12) 1px,transparent 1px)', backgroundSize: '28px 28px' }} />
             <div className="relative z-10">
               <div className="reveal inline-flex items-center gap-2.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-bright-green/70 mb-10">

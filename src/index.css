@@ -4,10 +4,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── Custom cursor ─────────────────────────────────────────────────────────── */
-* { cursor: none; }
-a, button { cursor: none; }
-
 /* ── Scrollbar ─────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
